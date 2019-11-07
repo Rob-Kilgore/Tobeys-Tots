@@ -1,2 +1,2 @@
 
-Hi everyone my name is Jonathan I have a background in SQL R and Javascript as well as what we have covered in class. I am eager to develop this webpage and hopefully learn a lot. My favorite Tobey Maquire movie is Spiderman.
+As Tobey Maguire once said “Not everyone is meant to make a difference. But for me, the choice to lead an ordinary life is no longer an option”. Hi, my name is Jonathan Rivernider I have a background in SQL R and Javascript as well as what we have covered in class. I am eager to develop this webpage. This project will require various different languages and applications to develop and I hope to expand my knowledge and learn a lot over the process. My favorite Tobey Maquire movie is Spiderman.
