@@ -1,0 +1,3 @@
+# Rob Kilgore
+
+Hey everyone, I'm Rob. I'm a senior in Computer Science at UMass Amherst. Over my CS career, I've mostly specialized in back end applications. This includes 5 summers of internships and all of my class experience. My favorite languages to code in are Java and C#. Outside of software, some of my hobbies include playing guitar and scuba diving. My favorite Tobey Maguire movie is undoubtedly Spider-Man 2 and my favorite Tobey Maguire quote is "Pizza Time!"
