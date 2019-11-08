@@ -1,0 +1,22 @@
+{
+  "name": "tobeys-tots",
+  "version": "1.0.0",
+  "description": "Movie Review Website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rob-Kilgore/Tobeys-Tots.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rob-Kilgore/Tobeys-Tots/issues"
+  },
+  "homepage": "https://github.com/Rob-Kilgore/Tobeys-Tots#readme",
+  "dependencies": {
+    "http-server": "^0.11.1"
+  }
+}
