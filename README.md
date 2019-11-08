@@ -13,7 +13,9 @@ Team members:
   3. [Jonathan Rivernider](Team/JonathanRivernider.md)
   4. [Sashank Yalavarthy](Team/SashankYalavarthy.md)
 
-1. Score
+
+
+1. Music
 2. Visual Effects
 3. Dialogue
 4. Cinematography
