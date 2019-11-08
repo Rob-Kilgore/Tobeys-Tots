@@ -12,3 +12,14 @@ Team members:
   2. [Ryan McCarthy](Team/RyanMcCarthy.md)
   3. [Jonathan Rivernider](Team/JonathanRivernider.md)
   4. [Sashank Yalavarthy](Team/SashankYalavarthy.md)
+
+1. Score
+2. Visual Effects
+3. Dialogue
+4. Cinematography
+5. Editing
+6. Story
+7. Acting
+8. Originality
+9. Atmosphere
+10. Impact
