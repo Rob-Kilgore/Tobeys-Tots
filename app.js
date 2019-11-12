@@ -1,10 +1,15 @@
 const http = require('http');
 const fs = require('fs');
 const assert = require('assert');
+const addMovie = require('./js/addMovie');
+
 var MongoClient = require('mongodb').MongoClient;
 
 const hostname = '127.0.0.1';
 const port = 8080;
+
+addMovie.Hello();
+
 
 var pw;
 try {
