@@ -6,12 +6,26 @@ var MongoClient = require('mongodb').MongoClient;
 const hostname = '127.0.0.1';
 const port = 8080;
 
-const pw = "Password goes here"
+var pw;
+try {
+     pw = extractPassword(process.argv);
+}
+catch(err) {
+     console.log("Error: " + err);
+     process.exit(1);
+}
+
 const dbUrl = "mongodb+srv://326-admin:" + pw + "@movietime-kuraq.mongodb.net/test?retryWrites=true&w=majority";
-const dbName = "MovieTimeDB"
+const dbName = "MovieTimeDB";
+
+
 
 MongoClient.connect(dbUrl, {useUnifiedTopology: true}, function(err, client) {
-     assert.equal(null, err);
+     if(err)
+     {
+          console.log("Error: " + err);
+          process.exit(1);
+     }
      console.log("Connected successfully to database");
    
      const db = client.db(dbName);
@@ -34,3 +48,19 @@ fs.readFile('webdir//index.html', (error, html) => {
           console.log('server started on port ' + port);
      });
 });
+
+function extractPassword(argv) {
+     var pw = null;
+     argv.forEach(function(str)
+     {
+          if(str.substring(0, 3) === "pw:")
+          {
+               pw = str.substring(3);
+          }
+     });
+     if(pw == null)
+     {
+          throw "Password argument not specified. Specify password using pw:[PASSWORD]";
+     }
+     return pw;
+}
