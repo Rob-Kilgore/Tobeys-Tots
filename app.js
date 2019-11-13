@@ -1,14 +1,13 @@
 const http = require('http');
 const fs = require('fs');
 const assert = require('assert');
-const addMovie = require('./js/addMovie');
+const dbInterface = require('./js/dbInterface');
 
 var MongoClient = require('mongodb').MongoClient;
+//var mongoose = require("mongoose");
 
 const hostname = '127.0.0.1';
 const port = 8080;
-
-addMovie.Hello();
 
 
 var pw;
@@ -20,23 +19,19 @@ catch(err) {
      process.exit(1);
 }
 
-const dbUrl = "mongodb+srv://326-admin:" + pw + "@movietime-kuraq.mongodb.net/test?retryWrites=true&w=majority";
 const dbName = "MovieTimeDB";
+const dbUrl = "mongodb+srv://326-admin:" + pw + "@movietime-kuraq.mongodb.net/" + dbName + "?retryWrites=true&w=majority";///" + dbName;
+
+try
+{
+     dbInterface.connect(dbUrl);
+}
+catch(err) {
+     console.log(err);
+     process.exit(1);
+}
 
 
-
-MongoClient.connect(dbUrl, {useUnifiedTopology: true}, function(err, client) {
-     if(err)
-     {
-          console.log("Error: " + err);
-          process.exit(1);
-     }
-     console.log("Connected successfully to database");
-
-     const db = client.db(dbName);
-
-     client.close();
-});
 
 fs.readFile('webdir//index.html', (error, html) => {
      if(error) {
