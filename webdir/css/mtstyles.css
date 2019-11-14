@@ -31,3 +31,7 @@ input:focus, textarea:focus {
 .attr {
     font-weight: 200;
 }
+
+.border-dark {
+    background-color: #ACACAC
+}
