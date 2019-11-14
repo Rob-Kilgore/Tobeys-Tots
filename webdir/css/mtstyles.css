@@ -33,5 +33,6 @@ input:focus, textarea:focus {
 }
 
 .border-dark {
-    background-color: #ACACAC
+    background-color: #ACACAC;
+    border: 8px solid goldenrod;
 }
