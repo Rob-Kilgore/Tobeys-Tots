@@ -25,6 +25,9 @@ const dbUrl = "mongodb+srv://326-admin:" + pw + "@movietime-kuraq.mongodb.net/" 
 try
 {
      dbInterface.connect(dbUrl);
+     //dbInterface.addUser("test@test.com", "testerman", "password123");
+     //dbInterface.addMovie("tt0145487", "Spider-Man", 2002);
+     //dbInterface.addReview("5dcda5266e7efe3264f013d5","5dcda19350adac312cc9b128", [10, 10, 10, 10, 10, 10, 10, 10, 10, 10], "perfect movie");
 }
 catch(err) {
      console.log(err);

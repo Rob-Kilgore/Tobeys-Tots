@@ -1,24 +1,29 @@
 var mongoose = require("mongoose");
+var ObjectId = mongoose.Schema.Types.ObjectId;
 
 var userSchema = new mongoose.Schema({
-    email:          { type: String, required: true },
-    fname:          { type: String, required: true },
-    lname:          { type: String, required: true },
+    email:          { type: String, required: true, unique: true },
+    username:       { type: String, required: true, unique: true },
     password:       { type: String, required: true }
  });
 
  var User = mongoose.model("User", userSchema, "Users");
 
  var movieSchema = new mongoose.Schema({
-     name:        { type: String, required: true },
-     director:    { type: String, required: true }
+     OID:        { type: String, required: true },
+     title:      { type: String, required: true },
+     year:       { type: Number, required: true },
+     scores:     { type: Array },
+     numReviews: { type: Array, required: true }
   });
  
   var Movie = mongoose.model("Movie", movieSchema, "Movies");
 
   var reviewSchema = new mongoose.Schema({
-      movie:   { type: String, required: true },
-      user:    { type: String, required: true }
+      movieID:   { type: ObjectId, required: true },
+      userID:    { type: ObjectId, required: true },
+      scores:    { type: Array, required: true },
+      text:      { type: String }
    });
   
    var Review = mongoose.model("Review", reviewSchema, "Reviews");
@@ -36,13 +41,12 @@ module.exports = {
             }
         });
     },
-    
-    addUser: function(id, name, director)
+
+    addUser: function(email, username, password)
     {
         var user = new User({
             email: email,
-            fname: fname,
-            lname: lname,
+            username: username,
             password: password
         });
         // wait for connection before doing stuff
@@ -56,11 +60,13 @@ module.exports = {
         });
     },
 
-    addMovie: function(name, director)
+    addMovie: function(OID, title, year)
     {
         var movie = new Movie({
-            name: name,
-            director: director
+            OID: OID,
+            title: title,
+            year: year,
+            numReviews: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         });
         // wait for connection before doing stuff
         mongoose.connection.once('open', function() { 
@@ -73,11 +79,13 @@ module.exports = {
         });
     },
 
-    addReview: function(movie, user)
+    addReview: function(movieID, userID, scores, text)
     {
         var review = new Review({
-            movie: movie,
-            user: user
+            movieID: ObjectId(movieID),
+            userID: ObjectId(userID),
+            scores: scores,
+            text: text
         });
         // wait for connection before doing stuff
         mongoose.connection.once('open', function() { 
