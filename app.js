@@ -49,7 +49,8 @@ app.get('/', function(req, res){
 
 //page for specific movie
 app.get('/movies/:movieId', function(req, res){
-  res.send(dbInterface.Hello())
+  let movieId = req.params.movieId;
+  res.send("<h1>Page for movie: "+movieId+"</h1>")
 })
 
 function extractPassword(argv) {
