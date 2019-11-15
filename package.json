@@ -18,10 +18,10 @@
   "homepage": "https://github.com/Rob-Kilgore/Tobeys-Tots#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "http-server": "^0.11.1",
     "jquery": "^3.4.1",
     "mocha": "^6.2.2",
     "mongodb": "^3.3.3",
-    "mongoose": "^5.7.10"
+    "mongoose": "^5.7.10",
+    "request": "^2.88.0"
   }
 }

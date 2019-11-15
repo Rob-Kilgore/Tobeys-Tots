@@ -1,6 +1,4 @@
-const http = require('http');
 const express = require('express');
-const fs = require('fs');
 const assert = require('assert');
 const dbInterface = require('./js/dbInterface');
 const app = express();
