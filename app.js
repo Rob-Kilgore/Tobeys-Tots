@@ -29,7 +29,7 @@ try
      dbInterface.connect(dbUrl);
      //dbInterface.addUser("test@test.com", "testerman", "password123");
      //dbInterface.addMovie("tt0145487", "Spider-Man", 2002);
-     //dbInterface.addReview("5dcda5266e7efe3264f013d5","5dcda19350adac312cc9b128", [10, 10, 10, 10, 10, 10, 10, 10, 10, 10], "perfect movie");
+     dbInterface.addReview("5dcdca5377608c1110a23296","5dcda19350adac312cc9b128", [10, -1, -1, 1, -1, 10, 10, 5, 10, 10], "solid movie");
 }
 catch(err) {
      console.log(err);

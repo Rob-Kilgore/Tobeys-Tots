@@ -1,5 +1,5 @@
 var mongoose = require("mongoose");
-var ObjectId = mongoose.Schema.Types.ObjectId;
+var ObjectId = mongoose.Types.ObjectId;
 
 var userSchema = new mongoose.Schema({
     email:          { type: String, required: true, unique: true },
@@ -27,6 +27,46 @@ var userSchema = new mongoose.Schema({
    });
   
    var Review = mongoose.model("Review", reviewSchema, "Reviews");
+
+
+   function updateMovieScore(review)
+   {
+       console.log("test");
+        Movie.findById(review.movieID, function(err, movie) {
+        if(err)
+        {
+            throw err;
+        }   
+        if(movie == null)
+            {
+                console.log("Movie not found");
+            }
+            else
+            {
+                if(movie.scores.length == 0)
+                {
+                    movie.scores = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                }
+                for(var i = 0; i < 10; i++)
+                {
+                    if(review.scores[i] > 0)
+                    {
+                        movie.numReviews[i]++;
+                        movie.scores[i] = ((movie.numReviews[i] - 1) * movie.scores[i] + review.scores[i]) / movie.numReviews[i];
+                        //movie.scores[i] = 0;
+                    }
+                }
+                
+                movie.markModified('numReviews');
+                movie.markModified('scores');
+                movie.save(function (err, movie) {
+                    if (err) 
+                        throw err;
+                    console.log("Updated movie scores");
+                });
+            }
+        });
+   }
 
 module.exports = {
     connect: function(dbUrl)
@@ -94,6 +134,7 @@ module.exports = {
                 if (err) 
                     throw err;
                 console.log("Added review to database");
+                updateMovieScore(review);
             });
         });
     },
