@@ -10,9 +10,10 @@ const hostname = '127.0.0.1';
 const port = 8080;
 
 
-var pw;
+var pw, APIKey;
 try {
-     pw = extractPassword(process.argv);
+     pw = extractArgument("pw", process.argv);
+     APIKey = extractArgument("api", process.argv);
 }
 catch(err) {
      console.log("Error: " + err);
@@ -25,6 +26,8 @@ const dbUrl = "mongodb+srv://326-admin:" + pw + "@movietime-kuraq.mongodb.net/" 
 try
 {
      dbInterface.connect(dbUrl);
+     //console.log(APIKey);
+     //console.log(dbInterface.getOMDBObject(APIKey,"tt0145487"));
      //dbInterface.addUser("test@test.com", "testerman", "password123");
      //dbInterface.addMovie("tt0145487", "Spider-Man", 2002);
      //dbInterface.addReview("5dcdca5377608c1110a23296","5dcda19350adac312cc9b128", [10, -1, -1, 1, -1, 10, 10, 5, 10, 10], "solid movie");
@@ -51,18 +54,18 @@ app.get('/movies/:movieId', function(req, res){
   res.send("<h1>Page for movie: "+movieId+"</h1>")
 })
 
-function extractPassword(argv) {
-     var pw = null;
+function extractArgument(arg, argv) {
+     var value = null;
      argv.forEach(function(str)
      {
-          if(str.substring(0, 3) === "pw:")
+          if(str.substring(0, arg.length + 1) === arg + ":")
           {
-               pw = str.substring(3);
+               value = str.substring(arg.length + 1);
           }
      });
-     if(pw == null)
+     if(value == null)
      {
-          throw "Password argument not specified. Specify password using pw:[PASSWORD]";
+          throw (arg + " argument not specified. Specify "+ arg + " using " + arg + ":[VALUE]");
      }
-     return pw;
+     return value;
 }

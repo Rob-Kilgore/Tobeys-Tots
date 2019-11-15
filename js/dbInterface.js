@@ -1,3 +1,4 @@
+const request = require("request");
 var mongoose = require("mongoose");
 var ObjectId = mongoose.Types.ObjectId;
 
@@ -137,6 +138,16 @@ module.exports = {
                 updateMovieScore(review);
             });
         });
+    },
+
+    getOMDBObject: function(APIKey, OID)
+    {
+        request('http://www.omdbapi.com/?apikey='+ APIKey + '&i=' + OID, {json: true }, (err, res, body) => {
+            if(err) { return console.log(err); }
+            //console.log(body);
+            return body; // body is entire JSON object
+        });
+
     },
 
     Hello: function()
