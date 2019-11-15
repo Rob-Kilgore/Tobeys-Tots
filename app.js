@@ -40,6 +40,18 @@ app.use(express.static("webdir"));
 
 app.listen(8080);
 
+//possible express routes (functions to be updated)
+
+//homepage
+app.get('/', function(req, res){
+  res.send(dbInterface.Hello())
+})
+
+//page for specific movie
+app.get('/movies/:movieId', function(req, res){
+  res.send(dbInterface.Hello())
+})
+
 function extractPassword(argv) {
      var pw = null;
      argv.forEach(function(str)
