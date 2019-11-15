@@ -1,9 +1,11 @@
 const http = require('http');
+const express = require('express');
 const fs = require('fs');
 const assert = require('assert');
 const dbInterface = require('./js/dbInterface');
+const app = express();
 
-var MongoClient = require('mongodb').MongoClient;
+const MongoClient = require('mongodb').MongoClient;
 //var mongoose = require("mongoose");
 
 const hostname = '127.0.0.1';
@@ -34,23 +36,9 @@ catch(err) {
      process.exit(1);
 }
 
+app.use(express.static("webdir"));
 
-
-fs.readFile('webdir//index.html', (error, html) => {
-     if(error) {
-          throw error;
-     }
-     const server = http.createServer((req, res) => {
-          res.statusCode = 200;
-          res.setHeader('Content-type', 'text/html');
-          res.write(html);
-          res.end();
-     });
-
-     server.listen(port, hostname, () => {
-          console.log('server started on port ' + port);
-     });
-});
+app.listen(8080);
 
 function extractPassword(argv) {
      var pw = null;
