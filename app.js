@@ -71,7 +71,7 @@ app.get('/', function(req, res){
 //page for specific movie
 app.get('/movies/:movieId', function(req, res){
   let movieId = req.params.movieId;
-  let movie = dbInterface.getDBMovieById();
+  let movie = dbInterface.getMovieByID();
   if(movie === -1){
     movie = dbInterface.getOMDBObjectById();
   }
@@ -80,9 +80,9 @@ app.get('/movies/:movieId', function(req, res){
 
 app.get('/search/:movieTitle', function(req, res){
   let movieTitle = req.params.movieTitle;
-  let movie = dbInterface.getDBMovieByName();
+  let movie = dbInterface.getMovieByTitle();
   if(movie === -1){
-    movie = dbInterface.getOMDBObjectByName();
+    movie = dbInterface.getOMDBObjectByTitle();
   }
   res.send(movie);
 })
