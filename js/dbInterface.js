@@ -69,6 +69,16 @@ var userSchema = new mongoose.Schema({
         });
    }
 
+
+    function getReviewsByMovie(mID, callback) {
+        var q = { "movieID" : mID };
+        
+        Review.find(q, function(err, reviews) {
+
+                callback(reviews);
+            });
+    }
+
 module.exports = {
     connect: function(dbUrl)
     {
@@ -140,14 +150,73 @@ module.exports = {
         });
     },
 
-    getOMDBObject: function(APIKey, OID)
+    getOMDBObjectByID: function(APIKey, OID, callback)
     {
         request('http://www.omdbapi.com/?apikey='+ APIKey + '&i=' + OID, {json: true }, (err, res, body) => {
-            if(err) { return console.log(err); }
-            //console.log(body);
-            return body; // body is entire JSON object
+            if(err) { throw err; }
+            callback(body);
+            //return body; // body is entire JSON object
+        });
+        //console.log(request('http://www.omdbapi.com/?apikey='+ APIKey + '&i=' + OID, {json: true }));
+
+    },
+
+    getOMDBObjectByTitle: function(APIKey, title, year, callback)
+    {
+        var yearStr = ''
+        if(year!= null)
+        {
+            yearStr = '&y=' + year;
+        }
+        request('http://www.omdbapi.com/?apikey='+ APIKey + '&t=' + title + yearStr, {json: true }, (err, res, body) => {
+            if(err) { throw err; }
+            callback(body);
         });
 
+    },
+
+    getMovieByTitle: function(title, year, callback) {
+        mongoose.connection.once('open', function() { 
+            
+            var q = { "title" : title, "year" : year };
+            var mov;
+            if(year==null)
+            {
+                q = { "title" : title };
+            }
+            
+            Movie.find(q, function(err, movies) {
+                if(err) {throw err; }
+                if(movies.length == 0)
+                {
+                    callback(-1);
+                    return;
+                }
+                mov = movies[0].toJSON();
+                getReviewsByMovie(mov._id, function(reviews) {
+                    mov["allReviews"] = reviews;
+                    callback(mov);
+                });
+            });
+        });
+    },
+
+    getMovieByID: function(mID, callback) {
+        mongoose.connection.once('open', function() {   
+            Movie.findById(ObjectId(mID), function(err, movie) {
+                if(err) {throw err; }
+                if(movie == null)
+                {
+                    callback(-1);
+                    return;
+                }
+                mov = movie.toJSON();
+                getReviewsByMovie(mov._id, function(reviews) {
+                    mov["allReviews"] = reviews;
+                    callback(mov);
+                });
+            });
+        });
     },
 
     Hello: function()

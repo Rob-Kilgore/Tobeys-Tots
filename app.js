@@ -27,16 +27,36 @@ try
 {
      dbInterface.connect(dbUrl);
      //console.log(APIKey);
-     //console.log(dbInterface.getOMDBObject(APIKey,"tt0145487"));
+     //var result = ;
+     //console.log(dbInterface.getOMDBObjectByTitle(APIKey,'Spider-Man', 2002));
+     /*console.log(dbInterface.getOMDBObjectByTitle(APIKey,'Spider-Man', null));
+     console.log("ID:");*/
+     /*dbInterface.getOMDBObjectByID(APIKey,'tt0145487', (body) => {
+          console.log(body);
+     });*/
+     /*dbInterface.getOMDBObjectByTitle(APIKey,'Spider-Man', 20, (body) => {
+          if(body.Response != 'False'){
+          console.log(body);
+          }
+          else
+          {
+               console.log(body.Error);
+          }
+     });*/
+     /*dbInterface.getMovieByID('5dcdca5377608c1110a2329a', (body) => {
+          console.log(body);
+     });*/
+     /*dbInterface.getMovieByTitle('Spiderman', null, (body) => {
+          console.log(body);
+     });*/
      //dbInterface.addUser("test@test.com", "testerman", "password123");
      //dbInterface.addMovie("tt0145487", "Spider-Man", 2002);
      //dbInterface.addReview("5dcdca5377608c1110a23296","5dcda19350adac312cc9b128", [10, -1, -1, 1, -1, 10, 10, 5, 10, 10], "solid movie");
 }
 catch(err) {
-     console.log(err);
+     console.log("Error: " + err);
      process.exit(1);
 }
-
 app.use(express.static("webdir"));
 
 app.listen(8080);
