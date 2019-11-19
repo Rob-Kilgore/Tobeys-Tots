@@ -1,0 +1,91 @@
+doctype html
+head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    title Tobey&apos;s Tots
+    // Bootstrap
+    link(href='css/bootstrap-4.3.1.css' rel='stylesheet')
+    link(href='css/mtstyles.css' rel='stylesheet' type='text/css')
+// Header
+.row(style='margin-top: 20px; margin-bottom: 20px;')
+    .col-sm-2
+        a(href='index.html')
+            img(src='images/movie_time.jpg' height='80px' width='200px' style='margin-left: 40px')
+    .col-lg-10(style='padding-right: 30px;')
+        // Search bar
+        .p-2.bg-light.rounded.rounded-pill.shadow-sm.mb-4
+            .input-group
+                .input-group-prepend
+                    button#button-addon2.btn.btn-link.text-warning(type='submit')
+                        i.fa.fa-search
+                input.form-control.border-0.bg-light(type='search' placeholder='Search' aria-describedby='button-addon2')
+.row.movieInfo
+    .col-xl-3
+        img.poster(src='images/sm2.jpg')
+    .col-xl-9.movieDesc
+        h2 Spider-Man 2
+        p.attr Action, Adventure | 2h 7m | 30 June 2004
+        br
+        h4
+            | When a failed nuclear fusion experiment results in an explosion that kills his wife, Dr. Otto Octavius (Alfred Molina) is transformed into Dr. Octopus, a cyborg with deadly metal tentacles. Doc Ock blames Spider-Man (Tobey Maguire) for the accident and seeks revenge. Meanwhile, Spidey&apos;s alter ego, Peter Parker, faces fading powers and self-doubt. Complicating matters are his best friend&apos;s (James Franco) hatred for Spider-Man and his true love&apos;s (Kirsten Dunst) sudden engagement to another man.
+        br
+        h5 Ratings:
+        .row
+            .col
+                .card.border-dark.mb-3(style='max-width: 18rem;')
+                    .card-body.text-dark
+                        h5.card-title Music: 9.5/10
+                        p.card-text.rating (From 56 ratings)
+            .col
+                .card.border-dark.mb-3(style='max-width: 18rem;')
+                    .card-body.text-dark
+                        h5.card-title Dialogue: 9.8/10
+                        p.card-text.rating (From 50 ratings)
+            .col
+                .card.border-dark.mb-3(style='max-width: 18rem;')
+                    .card-body.text-dark
+                        h5.card-title Story: 10/10
+                        p.card-text.rating (From 39 ratings)
+            .col
+                .card.border-dark.mb-3(style='max-width: 18rem;')
+                    .card-body.text-dark
+                        h5.card-title Editing: 8.8/10
+                        p.card-text.rating (From 47 ratings)
+            .col
+                .card.border-dark.mb-3(style='max-width: 18rem;')
+                    .card-body.text-dark
+                        h5.card-title Originality: 8.7/10
+                        p.card-text.rating (From 47 ratings)
+        .row
+            .col
+                .card.border-dark.mb-3(style='max-width: 18rem;')
+                    .card-body.text-dark
+                        h5.card-title Visual Effects: 10/10
+                        p.card-text  (From 47 ratings)
+            .col
+                .card.border-dark.mb-3(style='max-width: 18rem;')
+                    .card-body.text-dark
+                        h5.card-title Cinematography: 9/10
+                        p.card-text (From 44 ratings)
+            .col
+                .card.border-dark.mb-3(style='max-width: 18rem;')
+                    .card-body.text-dark
+                        h5.card-title Acting: 8.5/10
+                        p.card-text (From 46 ratings)
+            .col
+                .card.border-dark.mb-3(style='max-width: 18rem;')
+                    .card-body.text-dark
+                        h5.card-title Atmosphere: 9.1/10
+                        p.card-text (From 55 ratings)
+            .col
+                .card.border-dark.mb-3(style='max-width: 18rem;')
+                    .card-body.text-dark
+                        h5.card-title Impact: 9.4/10
+                        p.card-text (From 51 ratings)
+h5 Cast: (bootstrap cards for each cast member)
+// jQuery (necessary for Bootstrap's JavaScript plugins)
+script(src='js/jquery-3.3.1.min.js')
+// Include all compiled plugins (below), or include individual files as needed
+script(src='js/popper.min.js')
+script(src='js/bootstrap-4.3.1.js')

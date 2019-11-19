@@ -1,0 +1,77 @@
+doctype html
+head
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Tobey&apos;s Tots
+    link(href='css/bootstrap-4.3.1.css' rel='stylesheet' type='text/css')
+    link(href='css/mtstyles.css' rel='stylesheet' type='text/css')
+.row(style='margin-top: 20px;')
+    .col-sm-2
+        a(href='index.html')
+            img(src='images/movie_time.jpg' height='80px' width='200px' style='margin-left: 40px')
+    .col-lg-10(style='padding-right: 30px;')
+        // Search bar
+        .p-2.bg-light.rounded.rounded-pill.shadow-sm.mb-4
+            .input-group
+                .input-group-prepend
+                    button#button-addon2.btn.btn-link.text-warning(type='submit')
+                        i.fa.fa-search
+                input.form-control.border-0.bg-light(type='search' placeholder='Search' aria-describedby='button-addon2')
+// Carousel
+#carouselExampleIndicators1.carousel.slide(data-ride='carousel' style='background-color: #960018; margin-top: 15px; border: 7px solid black')
+    ol.carousel-indicators
+        li.active(data-target='#carouselExampleIndicators1' data-slide-to='0')
+        li(data-target='#carouselExampleIndicators1' data-slide-to='1')
+        li(data-target='#carouselExampleIndicators1' data-slide-to='2')
+    .carousel-inner(role='listbox')
+        .carousel-item.active
+            img.d-block.mx-auto(src='images/sm1.jpg' alt='First slide')
+            .carousel-caption
+                h5 Spider-Man
+                p 2002
+        .carousel-item
+            a(href='movie.html')
+                img.d-block.mx-auto(src='images/sm2.jpg' alt='Second slide')
+            .carousel-caption
+                h5 Spider-Man 2
+                p 2004
+        .carousel-item
+            img.d-block.mx-auto(src='images/sm3.jpg' alt='Third slide' width='336' height='500')
+            .carousel-caption
+                h5 Spider-Man 3
+                p 2007
+    a.carousel-control-prev(href='#carouselExampleIndicators1' role='button' data-slide='prev')
+        span.carousel-control-prev-icon(aria-hidden='true')
+        span.sr-only Previous
+    a.carousel-control-next(href='#carouselExampleIndicators1' role='button' data-slide='next')
+        span.carousel-control-next-icon(aria-hidden='true')
+        span.sr-only Next
+// Recomendations
+.row
+    .col(style='')
+        .card(style='width: 18rem; margin: 20px;')
+            img.card-img-top(src='images/joker.jpg' alt='...')
+            .card-body
+                h5.card-title Joker (2019)
+                p.card-text
+                    | Forever alone in a crowd, failed comedian Arthur Fleck seeks connection as he walks the streets of Gotham City. Isolated, bullied and disregarded by society, Fleck begins a slow descent into madness as he transforms into the criminal mastermind known as the Joker.
+    .col(style='')
+        .card(style='width: 18rem; margin: 20px;')
+            img.card-img-top(src='images/sb.jpg' alt='...')
+            .card-body
+                h5.card-title Seabiscuit (2003)
+                p.card-text
+                    | True story of the undersized Depression-era racehorse whose victories lifted not only the spirits of the team behind it but also those of their nation.
+    .col(style='')
+        .card(style='width: 18rem; margin: 20px;')
+            img.card-img-top(src='images/gg.jpg' alt='...')
+            .card-body
+                h5.card-title The Great Gatsby (2013)
+                p.card-text
+                    | A writer and wall street trader, Nick, finds himself drawn to the past and lifestyle of his millionaire neighbor, Jay Gatsby.
+    .col(style='')
+    .col(style='')
+    .col(style='')
+script(src='js/jquery-3.3.1.min.js' type='text/javascript')
+script(src='js/popper.min.js' type='text/javascript')
+script(src='js/bootstrap-4.3.1.js' type='text/javascript')
