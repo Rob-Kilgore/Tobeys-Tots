@@ -41,17 +41,39 @@ app.use(express.static("webdir"));
 
 app.listen(8080);
 
-//possible express routes (functions to be updated)
+//express routes (functions to be updated)
 
 //homepage
 app.get('/', function(req, res){
-  res.send(dbInterface.Hello())
+  res.send(dbInterface.getTopMovies())
 })
 
 //page for specific movie
 app.get('/movies/:movieId', function(req, res){
   let movieId = req.params.movieId;
-  res.send("<h1>Page for movie: "+movieId+"</h1>")
+  let movie = dbInterface.getDBMovieById();
+  if(movie === -1){
+    movie = dbInterface.getOMDBObjectById();
+  }
+  res.send(movie);
+})
+
+app.get('/search/:movieTitle', function(req, res){
+  let movieTitle = req.params.movieTitle;
+  let movie = dbInterface.getDBMovieByName();
+  if(movie === -1){
+    movie = dbInterface.getOMDBObjectByName();
+  }
+  res.send(movie);
+})
+
+app.post('/movies/:movieId/review', function(req, res){
+  let movieId = req.params.movieId;
+  let review = req.body;
+  let userId = review.userId;
+  let scores = review.scores;
+  let text = review.text;
+  dbInterface.addReview(movieId, userId, scores, text);
 })
 
 function extractArgument(arg, argv) {
