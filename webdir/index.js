@@ -9,7 +9,7 @@ function showTopMovies(){
   $thirditem.empty();
   $fourthitem.empty();
 
-  $.get("/app", (movies) => {
+  $.get("/server", (movies) => {
      movies.forEach(function(movie) {
 
      });

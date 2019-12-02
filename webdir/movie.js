@@ -11,7 +11,7 @@ function postReview(){
       //get all the fields filled routes
       $.ajax({
         type: "POST",
-        url: "/app/movies/"+movieId+"/review",
+        url: "/server/movies/"+movieId+"/review",
         data: JSON.stringify(movie),
         contentType: "application/json"
     }).done((data) => {
