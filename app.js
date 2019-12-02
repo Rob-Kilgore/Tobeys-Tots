@@ -1,7 +1,7 @@
 const express = require('express');
 const assert = require('assert');
-const dbInterface = require('./js/dbInterface');
-const category = require('./js/categoryEnum');
+const dbInterface = require('./api/dbInterface');
+const category = require('./api/categoryEnum');
 const app = express();
 
 const MongoClient = require('mongodb').MongoClient;
@@ -27,9 +27,8 @@ const dbUrl = "mongodb+srv://326-admin:" + pw + "@movietime-kuraq.mongodb.net/" 
 try
 {
      dbInterface.connect(dbUrl);
-     //console.log(APIKey);
-     //var result = ;
-     //console.log(dbInterface.getOMDBObjectByTitle(APIKey,'Spider-Man', 2002));
+     // console.log(APIKey);
+     // console.log(dbInterface.getOMDBObjectByTitle(APIKey,'Spider-Man', 2002));
      /*console.log(dbInterface.getOMDBObjectByTitle(APIKey,'Spider-Man', null));
      console.log("ID:");*/
      /*dbInterface.getOMDBObjectByID(APIKey,'tt0145487', (body) => {
