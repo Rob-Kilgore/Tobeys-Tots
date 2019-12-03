@@ -62,7 +62,7 @@ app.listen(8080);
 
 //homepage
 app.get('/', function(req, res){
-  res.send(dbInterface.getTopMovies())
+  res.json(dbInterface.getTopMovies())
 })
 
 //page for specific movie
@@ -72,7 +72,7 @@ app.get('/movies/:movieId', function(req, res){
   if(movie === -1){
     movie = dbInterface.getOMDBObjectById();
   }
-  res.send(movie);
+  res.json(movie);
 })
 
 app.get('/search/:movieTitle', function(req, res){
@@ -81,7 +81,7 @@ app.get('/search/:movieTitle', function(req, res){
   if(movie === -1){
     movie = dbInterface.getOMDBObjectByTitle();
   }
-  res.send(movie);
+  res.json(movie);
 })
 
 app.post('/movies/:movieId/review', function(req, res){
