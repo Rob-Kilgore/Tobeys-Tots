@@ -23,7 +23,14 @@ function postReview(){
   });
 }
 
+function getReviews(movieId){
+
+}
+
+
+//load functions on page laod
 $(() => {
   getMovieInfo();
   postReview();
+  getReviews();
 });
