@@ -11,11 +11,12 @@ var userSchema = new mongoose.Schema({
  var User = mongoose.model("User", userSchema, "Users");
 
  var movieSchema = new mongoose.Schema({
-     OID:        { type: String, required: true },
-     title:      { type: String, required: true },
-     year:       { type: Number, required: true },
-     scores:     { type: Array },
-     numReviews: { type: Array, required: true }
+     OID:               { type: Number, required: true },
+     title:             { type: String, required: true },
+     year:              { type: Number, required: true },
+     scores:            { type: Array },
+     aggregateScore:    { type: Number },
+     numReviews:        { type: Array, required: true }
   });
  
   var Movie = mongoose.model("Movie", movieSchema, "Movies");
@@ -32,7 +33,6 @@ var userSchema = new mongoose.Schema({
 
    function updateMovieScore(review)
    {
-       console.log("test");
         Movie.findById(review.movieID, function(err, movie) {
         if(err)
         {
@@ -48,18 +48,22 @@ var userSchema = new mongoose.Schema({
                 {
                     movie.scores = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
                 }
+                var average = 0;
                 for(var i = 0; i < 10; i++)
                 {
-                    if(review.scores[i] > 0)
+                    if(review.scores[i] >= 0)
                     {
                         movie.numReviews[i]++;
                         movie.scores[i] = ((movie.numReviews[i] - 1) * movie.scores[i] + review.scores[i]) / movie.numReviews[i];
                         //movie.scores[i] = 0;
                     }
+                    average += movie.scores[i];
                 }
-                
+                average /= 10;
+                movie.aggregateScore = average;
                 movie.markModified('numReviews');
                 movie.markModified('scores');
+                movie.markModified('aggregateScore');
                 movie.save(function (err, movie) {
                     if (err) 
                         throw err;
@@ -80,7 +84,7 @@ var userSchema = new mongoose.Schema({
     }
 
 module.exports = {
-    connect: function(dbUrl)
+    connect: function(dbUrl, callback)
     {
         mongoose.connect(dbUrl, {useNewUrlParser: true, useUnifiedTopology: true}, function(err) {
             if (err) {
@@ -88,12 +92,17 @@ module.exports = {
             }
             else {
                  console.log("Connected successfully to database");
-                 return true;
+                 callback(1);
             }
         });
     },
 
-    addUser: function(email, username, password)
+    getConnectionState: function()
+    {
+        return mongoose.connection._readyState;
+    },
+
+    addUser: function(email, username, password, callback)
     {
         var user = new User({
             email: email,
@@ -101,17 +110,18 @@ module.exports = {
             password: password
         });
         // wait for connection before doing stuff
-        mongoose.connection.once('open', function() { 
-            
             user.save(function (err, user) {
                 if (err) 
                     throw err;
                 console.log("Added user to database");
+                if(callback)
+                {
+                    callback(user);
+                }
             });
-        });
     },
 
-    addMovie: function(OID, title, year)
+    addMovie: function(OID, title, year, callback)
     {
         var movie = new Movie({
             OID: OID,
@@ -120,17 +130,18 @@ module.exports = {
             numReviews: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         });
         // wait for connection before doing stuff
-        mongoose.connection.once('open', function() { 
-            
             movie.save(function (err, movie) {
                 if (err) 
                     throw err;
                 console.log("Added movie to database");
+                if(callback)
+                {
+                    callback(movie);
+                }
             });
-        });
     },
 
-    addReview: function(movieID, userID, scores, text)
+    addReview: function(movieID, userID, scores, text, callback)
     {
         var review = new Review({
             movieID: ObjectId(movieID),
@@ -139,20 +150,21 @@ module.exports = {
             text: text
         });
         // wait for connection before doing stuff
-        mongoose.connection.once('open', function() { 
-            
             review.save(function (err, review) {
                 if (err) 
                     throw err;
                 console.log("Added review to database");
                 updateMovieScore(review);
+                if(callback)
+                {
+                    callback(review);
+                }
             });
-        });
     },
 
     getOMDBObjectByID: function(APIKey, OID, callback)
     {
-        request('http://www.omdbapi.com/?apikey='+ APIKey + '&i=' + OID, {json: true }, (err, res, body) => {
+        request('https://api.themoviedb.org/3/movie/'+ OID + '?api_key=' + APIKey + '&language=en-US', {json: true }, (err, res, body) => {
             if(err) { throw err; }
             callback(body);
             //return body; // body is entire JSON object
@@ -166,18 +178,44 @@ module.exports = {
         var yearStr = ''
         if(year!= null)
         {
-            yearStr = '&y=' + year;
+            yearStr = '&year=' + year;
         }
-        request('http://www.omdbapi.com/?apikey='+ APIKey + '&t=' + title + yearStr, {json: true }, (err, res, body) => {
+        var requestStr = 'https://api.themoviedb.org/3/search/movie?api_key=' 
+        + APIKey + '&language=en-US&query=' + title + '&page=1&include_adult=false' + yearStr;
+        request(requestStr, {json: true }, (err, res, body) => {
             if(err) { throw err; }
-            callback(body);
+            if(body.total_results == 0) {
+                throw "Could not find movie with title " + title;
+            }
+            
+            if(body.success == false) {
+                throw "Invalid Query";
+            }
+            callback(body.results[0]);
+        });
+
+    },
+
+    getPopularMovies: function(APIKey, callback)
+    {
+        var requestStr = 'https://api.themoviedb.org/3/movie/popular?api_key=' 
+        + APIKey + '&language=en-US&page=1';
+        request(requestStr, {json: true }, (err, res, body) => {
+            if(err) { throw err; }
+            
+            if(body.success == false) {
+                throw "Invalid Query";
+            }
+
+            if(body.total_results < 8) {
+                throw "Sorry, no movies here";
+            }
+            callback(body.results.slice(0, 8));
         });
 
     },
 
     getMovieByTitle: function(title, year, callback) {
-        mongoose.connection.once('open', function() { 
-            
             var q = { "title" : title, "year" : year };
             var mov;
             if(year==null)
@@ -198,11 +236,9 @@ module.exports = {
                     callback(mov);
                 });
             });
-        });
     },
 
-    getMovieByID: function(mID, callback) {
-        mongoose.connection.once('open', function() {   
+    getMovieByID: function(mID, callback) { 
             Movie.findById(ObjectId(mID), function(err, movie) {
                 if(err) {throw err; }
                 if(movie == null)
@@ -216,7 +252,22 @@ module.exports = {
                     callback(mov);
                 });
             });
-        });
+    },
+
+    getTopReviews: function(mID, callback) {  
+            Movie.findById(ObjectId(mID), function(err, movie) {
+                if(err) {throw err; }
+                if(movie == null)
+                {
+                    callback(-1);
+                    return;
+                }
+                mov = movie.toJSON();
+                getReviewsByMovie(mov._id, function(reviews) {
+                    mov["allReviews"] = reviews;
+                    callback(mov);
+                });
+            });
     },
 
     Hello: function()

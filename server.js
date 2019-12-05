@@ -26,29 +26,48 @@ const dbUrl = "mongodb+srv://326-admin:" + pw + "@movietime-kuraq.mongodb.net/" 
 
 try
 {
-     dbInterface.connect(dbUrl);
-     // console.log(APIKey);
-     // console.log(dbInterface.getOMDBObjectByTitle(APIKey,'Spider-Man', 2002));
-     /*console.log(dbInterface.getOMDBObjectByTitle(APIKey,'Spider-Man', null));
-     console.log("ID:");*/
-     /*dbInterface.getOMDBObjectByID(APIKey,'tt0145487', (body) => {
-          console.log(body);
-     });*/
-     /*dbInterface.getOMDBObjectByTitle(APIKey,'Spider-Man', 20, (body) => {
-          if(body.Response != 'False'){
-          console.log(body);
-          }
-          else
-          {
-               console.log(body.Error);
-          }
-     });*/
-     /*dbInterface.getMovieByID('5dcdca5377608c1110a2329a', (body) => {
-          console.log(body);
-     });*/
-     /*dbInterface.getMovieByTitle('Spiderman', null, (body) => {
-          console.log(body);
-     });*/
+     dbInterface.connect(dbUrl, (con) => {
+          //console.log(dbInterface.getOMDBObjectByTitle(APIKey,'Spider-Man', 2002));
+          /*console.log(dbInterface.getOMDBObjectByTitle(APIKey,'Spider-Man', null));
+          console.log("ID:");*/
+          /*dbInterface.getOMDBObjectByID(APIKey,'557', (body) => {
+               console.log(body);
+          });*/
+          /*dbInterface.getOMDBObjectByTitle(APIKey,'Spider-Man', 20, (body) => {
+               if(body.Response != 'False'){
+               console.log(body);
+               }
+               else
+               {
+                    console.log(body.Error);
+               }
+          });*/
+          /*dbInterface.getMovieByID('5dcdca5377608c1110a2329a', (body) => {
+               console.log(body);
+          });*/
+          /*dbInterface.getMovieByTitle('Spiderman', null, (body) => {
+               console.log(body);
+          });*/
+          //dbInterface.addUser("test@test.com", "testerman", "password123");
+          dbInterface.getPopularMovies(APIKey, (body) => {
+               console.log(body);
+          });
+          /*dbInterface.getMovieByTitle("Spider-Man", null, (body) => {
+               //console.log(body);
+               if(body == -1)
+               {
+                    dbInterface.addMovie(557, "Spider-Man", 2002);
+               }
+               else
+               {
+                    dbInterface.addReview(body._id, "5dcda19350adac312cc9b128", [10, 10, 10, 10, 10, 10, 10, 10, 10, 10], "perfect movie");
+                    dbInterface.getOMDBObjectByID(APIKey,body.OID, (body) => {
+                         console.log(body);
+                    });
+               }
+          });*/
+     });
+     
 }
 catch(err) {
      console.log("Error: " + err);
