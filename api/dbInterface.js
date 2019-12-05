@@ -185,7 +185,8 @@ module.exports = {
         request(requestStr, {json: true }, (err, res, body) => {
             if(err) { throw err; }
             if(body.total_results == 0) {
-                throw "Could not find movie with title " + title;
+                callback(-1);
+                return;
             }
             
             if(body.success == false) {
@@ -213,6 +214,27 @@ module.exports = {
             callback(body.results.slice(0, 8));
         });
 
+    },
+
+    getOrCreateMovie: function(title, year, APIKey, callback) {
+        this.getOMDBObjectByTitle(APIKey, title, year, (body) => {
+            if(body == -1) {
+                callback(-1);
+            }
+            else {
+                year = body.release_date.substring(0, 4);
+                this.getMovieByTitle(body.original_title, year, (res) => {
+                    if(res == -1) {
+                        this.addMovie(body.id, body.original_title, year, (movie) => {
+                            callback(movie);
+                        });
+                    }
+                    else {
+                        callback(res);
+                    }
+                });
+            }
+        });
     },
 
     getMovieByTitle: function(title, year, callback) {

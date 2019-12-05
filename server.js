@@ -49,23 +49,20 @@ try
                console.log(body);
           });*/
           //dbInterface.addUser("test@test.com", "testerman", "password123");
-          dbInterface.getPopularMovies(APIKey, (body) => {
+          /*dbInterface.getOrCreateMovie("Amazing Spider-Man", null, APIKey, (body) => {
                console.log(body);
-          });
-          /*dbInterface.getMovieByTitle("Spider-Man", null, (body) => {
+          });*/
+          dbInterface.getOrCreateMovie("Amazing Spider-Man", null, APIKey, (body) => {
                //console.log(body);
                if(body == -1)
                {
-                    dbInterface.addMovie(557, "Spider-Man", 2002);
+                    //dbInterface.addMovie(557, "Spider-Man", 2002);
                }
                else
                {
-                    dbInterface.addReview(body._id, "5dcda19350adac312cc9b128", [10, 10, 10, 10, 10, 10, 10, 10, 10, 10], "perfect movie");
-                    dbInterface.getOMDBObjectByID(APIKey,body.OID, (body) => {
-                         console.log(body);
-                    });
+                    dbInterface.addReview(body._id, "5dcda19350adac312cc9b128", [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], "awful");
                }
-          });*/
+          });
      });
      
 }
