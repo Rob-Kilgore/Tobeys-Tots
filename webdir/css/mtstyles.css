@@ -13,7 +13,7 @@ input:focus, textarea:focus {
 	outline: none;
 }
 
-.movie {
+.movieInfo {
     padding: 20px;
     border-top: 5px solid black;
     border-bottom: 5px solid black;
@@ -24,7 +24,7 @@ input:focus, textarea:focus {
     border: 5px solid goldenrod;
 }
 
-.movieBody {
+.movieDesc {
     color: #DEDEB3
 }
 
@@ -35,4 +35,18 @@ input:focus, textarea:focus {
 .border-dark {
     background-color: #ACACAC;
     border: 8px solid goldenrod;
+}
+.col{
+    
+    width: auto;
+    border-style: solid;
+    border-width: 5px;
+    border-color: black;
+}
+.wrapper{
+    background-color: black;
+    height: 5px;
+}
+.cardbody{
+    background-color: #acacac;
 }
