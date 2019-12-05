@@ -1,0 +1,93 @@
+.carouselExampleIndicators1 {
+  margin: 0;
+  
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  height: 1000px;
+  justify-content: center;
+}
+
+
+
+.carousel {
+  padding: 20px;
+  -webkit-perspective: 500px;
+          perspective: 500px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.carousel > * {
+  flex: 0 0 auto;
+}
+.carousel figure {
+  margin: 0;
+  width: 900px;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
+  -webkit-transform-origin: 50% 50% -482.8427124746px;
+          transform-origin: 50% 50% -482.8427124746px;
+}
+.carousel figure img {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 300px;
+  opacity: .99;
+}
+.carousel figure img:not(:first-of-type) {
+  position: absolute;
+  left: 0;
+  top: 0;
+  -webkit-transform-origin: 50% 50% -482.8427124746px;
+          transform-origin: 50% 50% -482.8427124746px;
+}
+.carousel figure img:nth-child(2) {
+  -webkit-transform: rotateY(0.7853981634rad);
+          transform: rotateY(0.7853981634rad);
+}
+.carousel figure img:nth-child(3) {
+  -webkit-transform: rotateY(1.5707963268rad);
+          transform: rotateY(1.5707963268rad);
+}
+.carousel figure img:nth-child(4) {
+  -webkit-transform: rotateY(2.3561944902rad);
+          transform: rotateY(2.3561944902rad);
+}
+.carousel figure img:nth-child(5) {
+  -webkit-transform: rotateY(3.1415926536rad);
+          transform: rotateY(3.1415926536rad);
+}
+.carousel figure img:nth-child(6) {
+  -webkit-transform: rotateY(3.926990817rad);
+          transform: rotateY(3.926990817rad);
+}
+.carousel figure img:nth-child(7) {
+  -webkit-transform: rotateY(4.7123889804rad);
+          transform: rotateY(4.7123889804rad);
+}
+.carousel figure img:nth-child(8) {
+  -webkit-transform: rotateY(5.4977871438rad);
+          transform: rotateY(5.4977871438rad);
+}
+.carousel nav {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 0;
+}
+.carousel nav button {
+  flex: 0 0 auto;
+    
+  margin: 0 5px;
+  cursor: pointer;
+  color: black;
+  background: white;
+  border: 1px solid;
+  letter-spacing: 1px;
+  padding: 5px 10px;
+}
