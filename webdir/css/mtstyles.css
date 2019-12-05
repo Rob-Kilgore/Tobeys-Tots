@@ -13,7 +13,7 @@ input:focus, textarea:focus {
 	outline: none;
 }
 
-.movieInfo {
+.movie {
     padding: 20px;
     border-top: 5px solid black;
     border-bottom: 5px solid black;
@@ -24,7 +24,7 @@ input:focus, textarea:focus {
     border: 5px solid goldenrod;
 }
 
-.movieDesc {
+.movieBody {
     color: #DEDEB3
 }
 

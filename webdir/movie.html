@@ -8,16 +8,16 @@
     <!-- Bootstrap -->
 	<link href="css/bootstrap-4.3.1.css" rel="stylesheet">
     <link href="css/mtstyles.css" rel="stylesheet" type="text/css">
-
+	
   </head>
   <body>
-
+      
   	<!-- Header -->
   <div class="row" style="margin-top: 20px; margin-bottom: 20px;">
 		  <div class="col-sm-2">
 		  	<a href="index.html"><img src="images/movie_time.jpg" height="80px" width="200px" style="margin-left: 40px"></a>
     </div>
-
+			
 		  <div class="col-lg-10" style="padding-right: 30px;">
 			<!-- Search bar -->
 			<div class="p-2 bg-light rounded rounded-pill shadow-sm mb-4">
@@ -30,143 +30,153 @@
 		  	</div>
 		  </div>
       </div>
-
-
-    <div class="row movieInfo">
-      <div id=moviePoster class="col-xl-3">
-        <!--This area will be blank and be loaded via the JS -->
+      
+      
+    <div class="row movie">
+      <div class="col-xl-3">
         <img src="images/sm2.jpg" class="poster">
       </div>
-
-      <div id=movieDescription class="col-xl-9 movieDesc">
-        <!--This area will be blank and be loaded via the JS -->
-        <h2>Spider-Man 2</h2>
-        <p class="attr">Action, Adventure | 2h 7m | 30 June 2004</p>
+        
+      <div class="col-xl-9 movieBody">
+        <h2 id="movieTitle">Spider-Man 2</h2>
+        <p class="attr" id="movieDetails">Action, Adventure | 2h 7m | 30 June 2004</p> <!-- Genre | Runtime | Release date -->
         <br>
-        <h4>When a failed nuclear fusion experiment results in an explosion that kills his wife, Dr. Otto Octavius (Alfred Molina) is transformed into Dr. Octopus, a cyborg with deadly metal tentacles. Doc Ock blames Spider-Man (Tobey Maguire) for the accident and seeks revenge. Meanwhile, Spidey's alter ego, Peter Parker, faces fading powers and self-doubt. Complicating matters are his best friend's (James Franco) hatred for Spider-Man and his true love's (Kirsten Dunst) sudden engagement to another man.</h4>
+        <h4 id="movieDesc">When a failed nuclear fusion experiment results in an explosion that kills his wife, Dr. Otto Octavius (Alfred Molina) is transformed into Dr. Octopus, a cyborg with deadly metal tentacles. Doc Ock blames Spider-Man (Tobey Maguire) for the accident and seeks revenge. Meanwhile, Spidey's alter ego, Peter Parker, faces fading powers and self-doubt. Complicating matters are his best friend's (James Franco) hatred for Spider-Man and his true love's (Kirsten Dunst) sudden engagement to another man.</h4>
         <br>
         <h5>Ratings:</h5>
-
+          
           <div class="row">
             <div class="col">
                   <div class="card border-dark mb-3" style="max-width: 18rem;">
               <div class="card-body text-dark">
-                <h5 class="card-title">Music: 9.5/10</h5>
+                <h5 class="card-title" id="musicCat">Music: 9.5/10</h5>
                 <p class="card-text rating">(From 56 ratings)</p>
               </div>
             </div>
-
+              
             </div>
-
+            
             <div class="col">
               <div class="card border-dark mb-3" style="max-width: 18rem;">
               <div class="card-body text-dark">
-                <h5 class="card-title">Dialogue: 9.8/10</h5>
+                <h5 class="card-title" id="dialCat">Dialogue: 9.8/10</h5>
                 <p class="card-text rating">(From 50 ratings)</p>
               </div>
             </div>
             </div>
-
+              
             <div class="col">
               <div class="card border-dark mb-3" style="max-width: 18rem;">
               <div class="card-body text-dark">
-                <h5 class="card-title">Story: 10/10</h5>
+                <h5 class="card-title" id="storyCat">Story: 10/10</h5>
                 <p class="card-text rating">(From 39 ratings)</p>
               </div>
             </div>
             </div>
-
+              
             <div class="col">
               <div class="card border-dark mb-3" style="max-width: 18rem;">
               <div class="card-body text-dark">
-                <h5 class="card-title">Editing: 8.8/10</h5>
+                <h5 class="card-title" id="editCat">Editing: 8.8/10</h5>
                 <p class="card-text rating">(From 47 ratings)</p>
               </div>
             </div>
             </div>
-
+              
             <div class="col">
               <div class="card border-dark mb-3" style="max-width: 18rem;">
               <div class="card-body text-dark">
-                <h5 class="card-title">Originality: 8.7/10</h5>
+                <h5 class="card-title" id="origCat">Originality: 8.7/10</h5>
                 <p class="card-text rating">(From 47 ratings)</p>
               </div>
             </div>
             </div>
-
+              
           </div>
-
-
+          
+          
           <div class="row">
             <div class="col">
 
             <div class="card border-dark mb-3" style="max-width: 18rem;">
               <div class="card-body text-dark">
-                <h5 class="card-title">Visual Effects: 10/10</h5>
+                <h5 class="card-title" id="visCat">Visual Effects: 10/10</h5>
                 <p class="card-text"> (From 47 ratings)</p>
               </div>
             </div>
-
+              
             </div>
-
+            
             <div class="col">
 
             <div class="card border-dark mb-3" style="max-width: 18rem;">
               <div class="card-body text-dark">
-                <h5 class="card-title">Cinematography: 9/10</h5>
+                <h5 class="card-title" id="cineCat">Cinematography: 9/10</h5>
                 <p class="card-text">(From 44 ratings)</p>
               </div>
             </div>
             </div>
-
+              
             <div class="col">
 
             <div class="card border-dark mb-3" style="max-width: 18rem;">
               <div class="card-body text-dark">
-                <h5 class="card-title">Acting: 8.5/10</h5>
+                <h5 class="card-title" id="actCat">Acting: 8.5/10</h5>
                 <p class="card-text">(From 46 ratings)</p>
               </div>
             </div>
             </div>
-
+              
             <div class="col">
 
             <div class="card border-dark mb-3" style="max-width: 18rem;">
               <div class="card-body text-dark">
-                <h5 class="card-title">Atmosphere: 9.1/10</h5>
+                <h5 class="card-title" id="atmCat">Atmosphere: 9.1/10</h5>
                 <p class="card-text">(From 55 ratings)</p>
               </div>
             </div>
             </div>
-
+              
             <div class="col">
 
             <div class="card border-dark mb-3" style="max-width: 18rem;">
               <div class="card-body text-dark">
-                <h5 class="card-title">Impact: 9.4/10</h5>
+                <h5 class="card-title" id="impCat">Impact: 9.4/10</h5>
                 <p class="card-text">(From 51 ratings)</p>
               </div>
             </div>
             </div>
-
+              
           </div>
-
-
-
+          
+          
+          
       </div>
   </div>
-
-  <h5>Cast: (bootstrap cards for each cast member)</h5>
-
-
-
-  <script src="movie.js"></script>
-
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      
+  <!-- Cast members -->
+  <div class="row" id="castRow">
+      <div class="col">
+          <div class="card" style="width:250px; margin: 20px; background-color: beige;">
+          <img class="card-img-top" src="images/tobey.jpg" alt="Card image" id="castImg1">
+          <div class="card-body">
+            <h4 class="card-title" id="castName1">Tobey Maguire</h4>
+          </div>
+        </div>  
+      </div>
+      
+      <div class="col">
+          <h1 style="vertical-align: middle">......</h1>
+      </div>
+  </div>
+    
+      
+      
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
 	<script src="js/jquery-3.3.1.min.js"></script>
 
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="js/popper.min.js"></script>
+  <script src="js/popper.min.js"></script> 
   <script src="js/bootstrap-4.3.1.js"></script>
 </body>
 </html>
