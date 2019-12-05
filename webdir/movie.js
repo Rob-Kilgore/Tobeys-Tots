@@ -63,4 +63,12 @@ $(() => {
             </div>
         </div>  
     </div>
+    
+    
+    Index Elements:
+    cposter1 - cposter8 = Carousel Poster Image Id's
+    toppost1 - toppost4 = 4 Top Reccomendation's Poster Image Id's
+    topname 1 - topname4 = 4 Top Reccomendation's Movie Names
+    topbio1 - topbio4 = 4 Top Reccomendation's Movie Bios
+    
 */
