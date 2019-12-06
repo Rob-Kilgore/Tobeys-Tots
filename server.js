@@ -52,7 +52,7 @@ try
           /*dbInterface.getOrCreateMovie("Amazing Spider-Man", null, APIKey, (body) => {
                console.log(body);
           });*/
-          dbInterface.getOrCreateMovie("Amazing Spider-Man", null, APIKey, (body) => {
+          /*dbInterface.getOrCreateMovie("Amazing Spider-Man", null, APIKey, (body) => {
                //console.log(body);
                if(body == -1)
                {
@@ -62,7 +62,10 @@ try
                {
                     dbInterface.addReview(body._id, "5dcda19350adac312cc9b128", [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], "awful");
                }
-          });
+          });*/
+          /*dbInterface.getTopReviews(category.ATMOSPHERE, (body) => {
+               console.log(body);
+          });*/
      });
      
 }

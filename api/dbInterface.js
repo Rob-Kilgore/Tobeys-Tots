@@ -276,20 +276,31 @@ module.exports = {
             });
     },
 
-    getTopReviews: function(mID, callback) {  
-            Movie.findById(ObjectId(mID), function(err, movie) {
-                if(err) {throw err; }
-                if(movie == null)
-                {
-                    callback(-1);
-                    return;
-                }
-                mov = movie.toJSON();
-                getReviewsByMovie(mov._id, function(reviews) {
-                    mov["allReviews"] = reviews;
-                    callback(mov);
-                });
-            });
+    getTopReviews: function(category, callback) {  
+        var test = Movie.aggregate([
+        {
+            $project:
+            {
+                title: 1,
+                aggregateScore: 1,
+                value: { $arrayElemAt: [ "$scores", category] }
+            }
+        },
+        {
+            $sort:
+            {
+                value: -1, 
+                aggregateScore: -1
+            }
+        },
+        {
+            $limit: 5
+        }
+        ]).then(value => {
+            if(callback) {
+                callback(value);
+            }
+        });
     },
 
     Hello: function()
