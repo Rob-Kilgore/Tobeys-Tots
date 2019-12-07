@@ -3,6 +3,7 @@ const assert = require('assert');
 const dbInterface = require('./api/dbInterface');
 const category = require('./api/categoryEnum');
 const app = express();
+const bodyParser = require("body-parser");
 
 const MongoClient = require('mongodb').MongoClient;
 //var mongoose = require("mongoose");
@@ -10,6 +11,7 @@ const MongoClient = require('mongodb').MongoClient;
 const hostname = '127.0.0.1';
 const port = 8080;
 
+const router = express.Router();
 
 var pw, APIKey;
 try {
@@ -67,50 +69,28 @@ try
                console.log(body);
           });*/
      });
-     
+
 }
 catch(err) {
      console.log("Error: " + err);
      process.exit(1);
 }
-app.use(express.static("webdir"));
 
-app.listen(8080);
+
 
 //express routes (functions to be updated)
+router.use(bodyParser.json());
 
-//homepage
-app.get('/', function(req, res){
-  res.json(dbInterface.getTopMovies())
-})
+// This will use the static middleware
+router.use(express.static('webdir'));
 
-//page for specific movie
-app.get('/movies/:movieId', function(req, res){
-  let movieId = req.params.movieId;
-  let movie = dbInterface.getMovieByID();
-  if(movie === -1){
-    movie = dbInterface.getOMDBObjectById();
-  }
-  res.json(movie);
-})
+// Mount our API router to the main router with the `/api/songs` prefix.
+router.use('/api/movie', require('./api/movie'));
 
-app.get('/search/:movieTitle', function(req, res){
-  let movieTitle = req.params.movieTitle;
-  let movie = dbInterface.getMovieByTitle();
-  if(movie === -1){
-    movie = dbInterface.getOMDBObjectByTitle();
-  }
-  res.json(movie);
-})
 
-app.post('/movies/:movieId/review', function(req, res){
-  let movieId = req.params.movieId;
-  let review = req.body;
-  let userId = review.userId;
-  let scores = review.scores;
-  let text = review.text;
-  dbInterface.addReview(movieId, userId, scores, text);
-})
+app.use(router);
+app.listen(8080);
+
 
 function extractArgument(arg, argv) {
      var value = null;
