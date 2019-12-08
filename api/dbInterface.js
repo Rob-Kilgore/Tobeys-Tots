@@ -282,6 +282,7 @@ module.exports = {
             $project:
             {
                 title: 1,
+                OID: 1,
                 aggregateScore: 1,
                 value: { $arrayElemAt: [ "$scores", category] }
             }
