@@ -32,7 +32,7 @@ function showTopMoviesByCategory(){
     acting = data;
   });
   for(var i=0; i<acting.length; i++){
-    $topActing.append('<li>'+acting[i].title+'</li>');
+    $topActing.append('<li> <a href="./movie.html">'+acting[i].title+'</a></li>');
   }
 
   let music = new Array();
@@ -40,7 +40,7 @@ function showTopMoviesByCategory(){
     music = data;
   });
   for(var i=0; i<music.length; i++){
-    $topMusic.append('<li>'+music[i].title+'</li>');
+    $topMusic.append('<li> <a href="./movie.html">'+music[i].title+'</a></li>');
   }
 
   let story = new Array();
@@ -48,7 +48,7 @@ function showTopMoviesByCategory(){
     story = data;
   });
   for(var i=0; i<story.length; i++){
-    $topStory.append('<li>'+story[i].title+'</li>');
+    $topStory.append('<li> <a href="./movie.html">'+story[i].title+'</a></li>');
   }
 
 
