@@ -29,22 +29,29 @@ function showTopMoviesByCategory(){
 
   let acting = new Array();
   $.get("/api/movie/topMovies/6", function( data ){
-    console.log("acting: "+data);
     acting = data;
   });
-
+  for(var i=0; i<acting.length; i++){
+    $topActing.append('<li>'+acting[i].title+'</li>');
+  }
 
   let music = new Array();
   $.get("/api/movie/topMovies/0", function( data ){
     music = data;
-      console.log("music: "+data);
   });
+  for(var i=0; i<music.length; i++){
+    $topMusic.append('<li>'+music[i].title+'</li>');
+  }
 
   let story = new Array();
   $.get("/api/movie/topMovies/5", function( data ){
     story = data;
-      console.log("story: "+data);
   });
+  for(var i=0; i<story.length; i++){
+    $topStory.append('<li>'+story[i].title+'</li>');
+  }
+
+
 }
 
 $(() => {

@@ -18,7 +18,7 @@ var userSchema = new mongoose.Schema({
      aggregateScore:    { type: Number },
      numReviews:        { type: Array, required: true }
   });
- 
+
   var Movie = mongoose.model("Movie", movieSchema, "Movies");
 
   var reviewSchema = new mongoose.Schema({
@@ -27,7 +27,7 @@ var userSchema = new mongoose.Schema({
       scores:    { type: Array, required: true },
       text:      { type: String }
    });
-  
+
    var Review = mongoose.model("Review", reviewSchema, "Reviews");
 
 
@@ -37,7 +37,7 @@ var userSchema = new mongoose.Schema({
         if(err)
         {
             throw err;
-        }   
+        }
         if(movie == null)
             {
                 console.log("Movie not found");
@@ -65,7 +65,7 @@ var userSchema = new mongoose.Schema({
                 movie.markModified('scores');
                 movie.markModified('aggregateScore');
                 movie.save(function (err, movie) {
-                    if (err) 
+                    if (err)
                         throw err;
                     console.log("Updated movie scores");
                 });
@@ -76,7 +76,7 @@ var userSchema = new mongoose.Schema({
 
     function getReviewsByMovie(mID, callback) {
         var q = { "movieID" : mID };
-        
+
         Review.find(q, function(err, reviews) {
 
                 callback(reviews);
@@ -111,7 +111,7 @@ module.exports = {
         });
         // wait for connection before doing stuff
             user.save(function (err, user) {
-                if (err) 
+                if (err)
                     throw err;
                 console.log("Added user to database");
                 if(callback)
@@ -131,7 +131,7 @@ module.exports = {
         });
         // wait for connection before doing stuff
             movie.save(function (err, movie) {
-                if (err) 
+                if (err)
                     throw err;
                 console.log("Added movie to database");
                 if(callback)
@@ -151,7 +151,7 @@ module.exports = {
         });
         // wait for connection before doing stuff
             review.save(function (err, review) {
-                if (err) 
+                if (err)
                     throw err;
                 console.log("Added review to database");
                 updateMovieScore(review);
@@ -180,7 +180,7 @@ module.exports = {
         {
             yearStr = '&year=' + year;
         }
-        var requestStr = 'https://api.themoviedb.org/3/search/movie?api_key=' 
+        var requestStr = 'https://api.themoviedb.org/3/search/movie?api_key='
         + APIKey + '&language=en-US&query=' + title + '&page=1&include_adult=false' + yearStr;
         request(requestStr, {json: true }, (err, res, body) => {
             if(err) { throw err; }
@@ -188,7 +188,7 @@ module.exports = {
                 callback(-1);
                 return;
             }
-            
+
             if(body.success == false) {
                 throw "Invalid Query";
             }
@@ -199,11 +199,11 @@ module.exports = {
 
     getPopularMovies: function(APIKey, callback)
     {
-        var requestStr = 'https://api.themoviedb.org/3/movie/popular?api_key=' 
+        var requestStr = 'https://api.themoviedb.org/3/movie/popular?api_key='
         + APIKey + '&language=en-US&page=1';
         request(requestStr, {json: true }, (err, res, body) => {
             if(err) { throw err; }
-            
+
             if(body.success == false) {
                 throw "Invalid Query";
             }
@@ -244,7 +244,7 @@ module.exports = {
             {
                 q = { "title" : title };
             }
-            
+
             Movie.find(q, function(err, movies) {
                 if(err) {throw err; }
                 if(movies.length == 0)
@@ -260,7 +260,7 @@ module.exports = {
             });
     },
 
-    getMovieByID: function(mID, callback) { 
+    getMovieByID: function(mID, callback) {
             Movie.findById(ObjectId(mID), function(err, movie) {
                 if(err) {throw err; }
                 if(movie == null)
@@ -276,7 +276,7 @@ module.exports = {
             });
     },
 
-    getTopReviews: function(category, callback) {  
+    getTopReviews: function(category, callback) {
         var test = Movie.aggregate([
         {
             $project:
@@ -289,7 +289,7 @@ module.exports = {
         {
             $sort:
             {
-                value: -1, 
+                value: -1,
                 aggregateScore: -1
             }
         },
@@ -298,6 +298,7 @@ module.exports = {
         }
         ]).then(value => {
             if(callback) {
+                // console.log(value);
                 callback(value);
             }
         });
