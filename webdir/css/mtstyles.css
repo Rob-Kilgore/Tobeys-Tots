@@ -43,7 +43,7 @@ input:focus, textarea:focus {
     background-color: #ACACAC;
     border: 8px solid goldenrod;
 }
-.col{
+.sect{
     
     width: auto;
     border-style: solid;
@@ -56,4 +56,39 @@ input:focus, textarea:focus {
 }
 .cardbody{
     background-color: #acacac;
+}
+.reviewCard {
+    width:95%;
+    margin: 20px;
+    background-color: beige;
+}
+.form-row {
+    padding-top: 5px;
+    padding-bottom: 15px;
+}
+.form-cat {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.form-rat {
+    height: 50px;
+    background-color: #DFDFDF;
+}
+.form-rat:hover {
+    background-color: #FFF9AC;
+}
+.form-rat:focus {
+    height: 50px;
+    background-color: #FFF9AC;
+    border: 3px solid black;
+}
+#textReview:hover {
+    background-color: #FFF9AC;
+}
+#textReview:focus {
+    background-color: #FFF9AC;
+    border: 3px solid black;
+}
+#submitRev:hover {
+    border: 5px solid goldenrod;
 }

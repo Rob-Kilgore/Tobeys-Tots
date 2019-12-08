@@ -9,6 +9,8 @@
 	<link href="css/bootstrap-4.3.1.css" rel="stylesheet">
     <link href="css/mtstyles.css" rel="stylesheet" type="text/css">
       <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+      
+      <script src="movie.js"></script> 
 	
   </head>
   <body>
@@ -26,7 +28,7 @@
 				  <div class="input-group-prepend">
 					<button id="button-addon2" type="submit" class="btn btn-link text-warning"><i class="fa fa-search"></i></button>
 				  </div>
-				  <input type="search" placeholder="Search" aria-describedby="button-addon2" class="form-control border-0 bg-light">
+				  <input type="search" placeholder="Enter Movie Name with year in paranthesis: Name (year)" results = "0" aria-describedby="button-addon2" class="form-control border-0 bg-light">
 				</div>
 		  	</div>
 		  </div>
@@ -39,7 +41,7 @@
       </div>
         
       <div class="col-xl-9 movieBody">
-        <h2 id="movieTitle">Spider-Man 2</h2>
+        <h2 id="movieTitle" style="font-weight:1000;">Spider-Man 2</h2>
         <p class="attr" id="movieDetails">Action, Adventure | 2h 7m | 30 June 2004</p> <!-- Genre | Runtime | Release date -->
         <br>
         <h4 id="movieDesc">When a failed nuclear fusion experiment results in an explosion that kills his wife, Dr. Otto Octavius (Alfred Molina) is transformed into Dr. Octopus, a cyborg with deadly metal tentacles. Doc Ock blames Spider-Man (Tobey Maguire) for the accident and seeks revenge. Meanwhile, Spidey's alter ego, Peter Parker, faces fading powers and self-doubt. Complicating matters are his best friend's (James Franco) hatred for Spider-Man and his true love's (Kirsten Dunst) sudden engagement to another man.</h4>
@@ -47,7 +49,7 @@
        
           
           <div class="row">
-            <div class="coll">
+            <div class="col">
                   <div class="card border-dark mb-3" style="max-width: 18rem;">
               <div class="card-body text-dark">
                 <h5 class="card-title" id="musicCat">Music: 9.5/10</h5>
@@ -57,7 +59,7 @@
               
             </div>
             
-            <div class="coll">
+            <div class="col">
               <div class="card border-dark mb-3" style="max-width: 18rem;">
               <div class="card-body text-dark">
                 <h5 class="card-title" id="dialCat">Dialogue: 9.8/10</h5>
@@ -66,7 +68,7 @@
             </div>
             </div>
               
-            <div class="coll">
+            <div class="col">
               <div class="card border-dark mb-3" style="max-width: 18rem;">
               <div class="card-body text-dark">
                 <h5 class="card-title" id="storyCat">Story: 10/10</h5>
@@ -75,7 +77,7 @@
             </div>
             </div>
               
-            <div class="coll">
+            <div class="col">
               <div class="card border-dark mb-3" style="max-width: 18rem;">
               <div class="card-body text-dark">
                 <h5 class="card-title" id="editCat">Editing: 8.8/10</h5>
@@ -84,7 +86,7 @@
             </div>
             </div>
               
-            <div class="coll">
+            <div class="col">
               <div class="card border-dark mb-3" style="max-width: 18rem;">
               <div class="card-body text-dark">
                 <h5 class="card-title" id="origCat">Originality: 8.7/10</h5>
@@ -97,7 +99,7 @@
           
           
           <div class="row">
-            <div class="coll">
+            <div class="col">
 
             <div class="card border-dark mb-3" style="max-width: 18rem;">
               <div class="card-body text-dark">
@@ -108,7 +110,7 @@
               
             </div>
             
-            <div class="coll">
+            <div class="col">
 
             <div class="card border-dark mb-3" style="max-width: 18rem;">
               <div class="card-body text-dark">
@@ -118,7 +120,7 @@
             </div>
             </div>
               
-            <div class="coll">
+            <div class="col">
 
             <div class="card border-dark mb-3" style="max-width: 18rem;">
               <div class="card-body text-dark">
@@ -128,7 +130,7 @@
             </div>
             </div>
               
-            <div class="coll">
+            <div class="col">
 
             <div class="card border-dark mb-3" style="max-width: 18rem;">
               <div class="card-body text-dark">
@@ -138,7 +140,7 @@
             </div>
             </div>
               
-            <div class="coll">
+            <div class="col">
 
             <div class="card border-dark mb-3" style="max-width: 18rem;">
               <div class="card-body text-dark">
@@ -150,31 +152,99 @@
               
           </div>
           
-          
-          
       </div>
   </div>
       
-  <!-- Cast members -->
   <div class="row" id="castRow">
-      <div class="col">
-          <div class="card" style="width:250px; margin: 20px; background-color: beige;">
-          <img class="card-img-top" src="images/tobey.jpg" alt="Card image" id="castImg1">
-          <div class="card-body">
-            <h4 class="card-title" id="castName1">Tobey Maguire</h4>
+      <!-- Reviews -->
+      <div class="col sect">
+          <div class="card reviewCard">
+              <div class="card-body">
+                <h4 class="card-title" id="review1">Text Review 1</h4>
+              </div>
           </div>
-        </div>  
+          <div class="card reviewCard">
+              <div class="card-body">
+                <h4 class="card-title" id="review2">Text Review 2</h4>
+              </div>
+          </div>
+          
       </div>
       
-      <div class="col">
-          <h1 style="vertical-align: middle">......</h1>
+      <!-- New Review Form -->
+      <div class="col sect">
+          <div class="card" style="margin-top: 10px; margin-bottom: 15px; background-color: #B72927; border: 10px solid goldenrod">
+              <div class="card-body">
+                <h1 style="color: black; text-align: center; font-weight: 1000;">Leave a review.</h1>
+              </div>
+          </div>
+          
+          
+            <form id="reviewForm"  style="width: 95%; padding-left: 5px;">
+                <h4 id="formError" style="color: red; text-align: center;"></h3>
+                <label style="padding-top: 10px; color: #ABABAB; padding-left: 5px; font-size: 18pt;">Rate each category out of 10.</label>
+              <div class="form-row">
+                <div class="col form-cat">
+                  <input type="text" class="form-control form-rat" id="musicRev" placeholder="Music">
+                </div>
+                  
+                <div class="col form-cat">
+                  <input type="text" class="form-control form-rat" id="dialRev" placeholder="Dialogue">
+                </div>
+                
+                <div class="col form-cat">
+                  <input type="text" class="form-control form-rat" id="storyRev" placeholder="Story">
+                </div>
+                
+                <div class="col form-cat">
+                  <input type="text" class="form-control form-rat" id="editRev" placeholder="Editing">
+                </div>
+                
+                <div class="col form-cat">
+                  <input type="text" class="form-control form-rat" id="origRev" placeholder="Originality">
+                </div>
+              </div>
+            
+              <div class="form-row">
+                <div class="col form-cat">
+                  <input type="text" class="form-control form-rat" id="visRev" placeholder="Visual Effects">
+                </div>
+                  
+                <div class="col form-cat">
+                  <input type="text" class="form-control form-rat" id="cineRev" placeholder="Cinematography">
+                </div>
+                
+                <div class="col form-cat">
+                  <input type="text" class="form-control form-rat" id="actingRev" placeholder="Acting">
+                </div>
+                
+                <div class="col form-cat">
+                  <input type="text" class="form-control form-rat" id="atmRev" placeholder="Atmosphere">
+                </div>
+                
+                <div class="col form-cat">
+                  <input type="text" class="form-control form-rat" id="impRev" placeholder="Impact">
+                </div>
+              </div>
+                
+              <div class="form-group" style="padding-left: 5px;">
+                <label for="textReview" style="padding-top: 10px; color: #ABABAB; font-size: 18pt;">What did you think of the movie?</label>
+                <textarea class="form-control" id="textReview" rows="4" style="height: 100px;"></textarea>
+                  
+                <button type="submit" id="submitRev" class="btn btn-primary" style="margin-top: 30px; background-color: #B72927; width: 100%; height: 50px; color: black; font-weight: bold;">Submit Review</button>
+                
+              </div>
+                
+            </form>
       </div>
+      
   </div>
     
       
       
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
 	<script src="js/jquery-3.3.1.min.js"></script>
+    
 
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="js/popper.min.js"></script> 

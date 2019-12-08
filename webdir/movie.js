@@ -54,16 +54,27 @@ $(() => {
     <h5 class="card-title" id="atmCat">Atmosphere: 9.1/10</h5>
     <h5 class="card-title" id="impCat">Impact: 9.4/10</h5>
 
-    Cast member card:
+    Text Review Card:
     <div class="col">
         <div class="card" style="width:250px; margin: 20px; background-color: beige;">
-            <img class="card-img-top" src="FACE IMAGE" alt="Cast Image" id="castImg1">
             <div class="card-body">
-                <h4 class="card-title" id="castName1"> NAME </h4>
+              <h4 class="card-title" id="review1">Text Review</h4>
             </div>
-        </div>  
+        </div>
     </div>
     
+    New Review Form:
+      Rating categories input field:
+      <input type="text" class="form-control form-rat" id="musicRev" placeholder="Music">
+      Other IDs: dialRev, storyRev, editRev, origRev, visRev, cineRev, actingRev, atmRev, impRev
+
+      Text Review input field:
+      <textarea class="form-control" id="textReview" rows="4" style="height: 100px;"></textarea>
+
+      Form error display:
+      <h4 id="formError" style="color: red; text-align: center;"></h3>
+
+      Review submit button ID: submitRev
     
     Index Elements:
     cposter1 - cposter8 = Carousel Poster Image Id's
