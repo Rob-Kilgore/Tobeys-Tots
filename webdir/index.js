@@ -13,7 +13,7 @@ function showPopularMovies(){
   for(var i = 0; i < topMovies.length; i++){
     let path = "https://image.tmdb.org/t/p/w1280"+topMovies[i].poster_path;
     let movieId = topMovies[i].id;
-    $carousel.append('<img src="'+path+'" id = "cposter1" alt="" class="'+movieId+'">');
+    $carousel.append('<img onclick="location.href = \'./movie.html\';" src="'+path+'" id = "cposter1" alt="" class="'+movieId+'">');
   }
 
 }
