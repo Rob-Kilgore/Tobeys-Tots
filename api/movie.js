@@ -5,12 +5,8 @@ const dbInterface = require('./dbInterface');
 router.get('/', (req, res) => {
   var movies = [];
   dbInterface.getPopularMovies('a05a8eaa14c959a0ea671b72e74db2a1', (body) => {
-       for (var i=0; i < body.length; i++){
-         movies.push(body[i]);
-       }
+       res.json(body);
   });
-  console.log(movies);
-  res.json(movies);
 });
 
 //page for specific movie
