@@ -3,9 +3,15 @@ const dbInterface = require('./dbInterface');
 
 // Add redirects to html files.
 router.get('/', (req, res) => {
-  var movies = [];
   dbInterface.getPopularMovies('a05a8eaa14c959a0ea671b72e74db2a1', (body) => {
        res.json(body);
+  });
+});
+
+router.get('/topMovies/:category', (req, res) => {
+  dbInterface.getTopReviews(parseInt(req.params.category), (body) => {
+    console.log(req.params.category+": "+body)
+    res.json(body);
   });
 });
 
