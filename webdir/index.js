@@ -32,7 +32,7 @@ function showTopMoviesByCategory(){
     acting = data;
   });
   for(var i=0; i<acting.length; i++){
-    $topActing.append('<li> <a href="./movie.html?title='+acting[i].title+'">'+acting[i].title+'</a></li>');
+    $topActing.append('<li> <a href="./movie.html?id='+acting[i].OID+'">'+acting[i].title+'</a></li>');
   }
 
   let music = new Array();
@@ -40,7 +40,7 @@ function showTopMoviesByCategory(){
     music = data;
   });
   for(var i=0; i<music.length; i++){
-    $topMusic.append('<li> <a href="./movie.html?title='+music[i].title+'">'+music[i].title+'</a></li>');
+    $topMusic.append('<li> <a href="./movie.html?id='+music[i].OID+'">'+music[i].title+'</a></li>');
   }
 
   let story = new Array();
@@ -48,7 +48,7 @@ function showTopMoviesByCategory(){
     story = data;
   });
   for(var i=0; i<story.length; i++){
-    $topStory.append('<li> <a href="./movie.html?title='+story[i].title+'">'+story[i].title+'</a></li>');
+    $topStory.append('<li> <a href="./movie.html?id='+story[i].OID+'">'+story[i].title+'</a></li>');
   }
 
 
