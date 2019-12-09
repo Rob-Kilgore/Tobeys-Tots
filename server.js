@@ -44,7 +44,7 @@ try
                     console.log(body.Error);
                }
           });*/
-          /*dbInterface.getMovieByID('5dcdca5377608c1110a2329a', (body) => {
+          /*dbInterface.getMovieByID(557, (body) => {
                console.log(body);
           });*/
           /*dbInterface.getMovieByTitle('Spiderman', null, (body) => {

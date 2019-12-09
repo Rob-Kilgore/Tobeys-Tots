@@ -261,19 +261,20 @@ module.exports = {
     },
 
     getMovieByID: function(mID, callback) {
-            Movie.findById(ObjectId(mID), function(err, movie) {
-                if(err) {throw err; }
-                if(movie == null)
-                {
-                    callback(-1);
-                    return;
-                }
-                mov = movie.toJSON();
-                getReviewsByMovie(mov._id, function(reviews) {
-                    mov["allReviews"] = reviews;
-                    callback(mov);
-                });
+        var q = { "OID" : mID };
+        Movie.find(q, function(err, movies) {
+            if(err) {throw err; }
+            if(movies.length == 0)
+            {
+                callback(-1);
+                return;
+            }
+            mov = movies[0].toJSON();
+            getReviewsByMovie(mov._id, function(reviews) {
+                mov["allReviews"] = reviews;
+                callback(mov);
             });
+        });
     },
 
     getTopReviews: function(category, callback) {
