@@ -10,9 +10,10 @@ function getQueryVariable(variable) {
     console.log('Query variable %s not found', variable);
 }
 
+let movieId=getQueryVariable('id');
+
 //function to get info on movie
 function getMovieInfo(){
-  let movieId=getQueryVariable('id');
   const $poster=$("#moviePoster");
   const $desc=$("#movieDesc");
   const $details=$("#movieDetails");
@@ -34,8 +35,49 @@ function getMovieInfo(){
 }
 
 function getReviews(movieId){
-  
+  const $music=$("#musicCat");
+  const $vfx=$("#visCat");
+  const $dialogue=$("#dialCat");
+  const $cinemetogrophy=$("#cineCat");
+  const $editing=$("#editCat");
+  const $story=$("#storyCat");
+  const $acting=$("#actCat");
+  const $originality=$("#origCat");
+  const $atmosphere=$("#atmCat");
+  const $impact=$("#impCat");
+
+  $music.empty();
+  $vfx.empty();
+  $dialogue.empty();
+  $cinemetogrophy.empty();
+  $editing.empty();
+  $story.empty();
+  $acting.empty();
+  $originality.empty();
+  $atmosphere.empty();
+  $impact.empty();
+
+  movieId=getQueryVariable('id');
+  // console.log("id being passed: "+movieId);
+  $.get("/api/movie/"+movieId+"/reviews", function( data ){
+    // console.log("body: "+data.scores[0]);
+    if(data.scores){
+      $music.append('<h5 class="card-title">Music: '+data.scores[0]+'/10</h5><p class="card-text rating">(From '+data.numReviews[0]+' ratings)</p>');
+      $vfx.append('<h5 class="card-title">Visual Effects: '+data.scores[1]+'/10</h5><p class="card-text rating">(From '+data.numReviews[1]+' ratings)</p>');
+      $dialogue.append('<h5 class="card-title">Dialogue: '+data.scores[2]+'/10</h5><p class="card-text rating">(From '+data.numReviews[2]+' ratings)</p>');
+      $cinemetogrophy.append('<h5 class="card-title">Cinematography: '+data.scores[3]+'/10</h5><p class="card-text rating">(From '+data.numReviews[3]+' ratings)</p>');
+      $editing.append('<h5 class="card-title">Editing: '+data.scores[4]+'/10</h5><p class="card-text rating">(From '+data.numReviews[4]+' ratings)</p>');
+      $story.append('<h5 class="card-title">Story: '+data.scores[5]+'/10</h5><p class="card-text rating">(From '+data.numReviews[5]+' ratings)</p>');
+      $acting.append('<h5 class="card-title">Acting: '+data.scores[6]+'/10</h5><p class="card-text rating">(From '+data.numReviews[6]+' ratings)</p>');
+      $originality.append('<h5 class="card-title">Originality: '+data.scores[7]+'/10</h5><p class="card-text rating">(From '+data.numReviews[7]+' ratings)</p>');
+      $atmosphere.append('<h5 class="card-title">Atmosphere: '+data.scores[8]+'/10</h5><p class="card-text rating">(From '+data.numReviews[8]+' ratings)</p>');
+      $impact.append('<h5 class="card-title">Impact: '+data.scores[9]+'/10</h5><p class="card-text rating">(From '+data.numReviews[9]+' ratings)</p>');
+    }
+  });
 }
+
+// <!-- <h5 class="card-title">Music: 9.5/10</h5>
+// <p class="card-text rating">(From 56 ratings)</p> -->
 
 //function to post review of movie
 // function postReview(){
@@ -61,8 +103,8 @@ function getReviews(movieId){
 //load functions on page laod
 $(() => {
   getMovieInfo();
+  getReviews();
   // postReview();
-  // getReviews();
 });
 
 /*  Movie page elements

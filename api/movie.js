@@ -19,7 +19,7 @@ router.get('/topMovies/:category', (req, res) => {
 //page for specific movie
 router.get('/:movieId', function(req, res){
   let movieId = req.params.movieId;
-  console.log('id: '+movieId);
+  // console.log('id: '+movieId);
   //let movie = dbInterface.getMovieByID(movieId);
   //if(movie === -1){
     dbInterface.getOMDBObjectByID('a05a8eaa14c959a0ea671b72e74db2a1', movieId, (body) => {
@@ -31,6 +31,16 @@ router.get('/:movieId', function(req, res){
 //  }
 })
 
+//reviews for a specific movies
+router.get('/:movieId/reviews', function(req, res){
+  let id = req.params.movieId;
+  // console.log("id: "+id);
+  dbInterface.getMovieByID(id, (body) => {
+    // console.log(body);
+    res.json(body);
+  })
+})
+
 router.get('/search/:movieTitle', function(req, res){
   let movieTitle = req.params.movieTitle;
   let movie = dbInterface.getMovieByTitle();
@@ -40,7 +50,7 @@ router.get('/search/:movieTitle', function(req, res){
   res.json(movie);
 })
 
-router.post('/movies/:movieId/review', function(req, res){
+router.post('/:movieId/postReview', function(req, res){
   let movieId = req.params.movieId;
   let review = req.body;
   let userId = review.userId;
