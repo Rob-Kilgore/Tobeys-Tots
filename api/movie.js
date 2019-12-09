@@ -17,13 +17,18 @@ router.get('/topMovies/:category', (req, res) => {
 });
 
 //page for specific movie
-router.get('/movies/:movieId', function(req, res){
+router.get('/:movieId', function(req, res){
   let movieId = req.params.movieId;
-  let movie = dbInterface.getMovieByID();
-  if(movie === -1){
-    movie = dbInterface.getOMDBObjectById();
-  }
-  res.json(movie);
+  console.log('id: '+movieId);
+  //let movie = dbInterface.getMovieByID(movieId);
+  //if(movie === -1){
+    dbInterface.getOMDBObjectByID('a05a8eaa14c959a0ea671b72e74db2a1', movieId, (body) => {
+      // console.log(body);
+      let movie=body;
+      // console.log(movie);
+        res.json(movie);
+    });
+//  }
 })
 
 router.get('/search/:movieTitle', function(req, res){

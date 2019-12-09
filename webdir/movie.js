@@ -1,47 +1,75 @@
-//function to get info on movie
-function getMovieInfo(movieId){
-  $.get("/app/movies/"+movieId, movie=> {
+function getQueryVariable(variable) {
+    var query = window.location.search.substring(1);
+    var vars = query.split('&');
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split('=');
+        if (decodeURIComponent(pair[0]) == variable) {
+            return decodeURIComponent(pair[1]);
+        }
+    }
+    console.log('Query variable %s not found', variable);
+}
 
+//function to get info on movie
+function getMovieInfo(){
+  let movieId=getQueryVariable('id');
+  const $poster=$("#moviePoster");
+  const $desc=$("#movieDesc");
+  const $details=$("#movieDetails");
+  const $title=$("#movieTitle");
+
+  $poster.empty();
+  $desc.empty();
+  $details.empty();
+  $title.empty();
+
+  console.log('id: '+movieId);
+  $.get("/api/movie/"+movieId, function( data ){
+      // console.log(data);
+      $poster.append('<img src="https://image.tmdb.org/t/p/w342'+data.poster_path+'" class="poster">')
+      $desc.append(data.overview);
+      $details.append(data.genres[0].name+' | '+data.runtime+ ' minutes | '+data.release_date);
+      $title.append(data.title);
   });
 }
 
 //function to post review of movie
-function postReview(){
-  $("#saveBtn").click(() => {
-      //get all the fields filled routes
-      $.ajax({
-        type: "POST",
-        url: "/server/movies/"+movieId+"/review",
-        data: JSON.stringify(movie),
-        contentType: "application/json"
-    }).done((data) => {
-        // Reset the form after saving the movie
-        $("form").trigger("reset");
-    }).fail((jqXHR) => {
-        $("#error").html("The review could not be added.");
-    });
-  });
-}
-
-function getReviews(movieId){
-
-}
+// function postReview(){
+//   $("#saveBtn").click(() => {
+//       //get all the fields filled routes
+//       $.ajax({
+//         type: "POST",
+//         url: "/server/movies/"+movieId+"/review",
+//         data: JSON.stringify(movie),
+//         contentType: "application/json"
+//     }).done((data) => {
+//         // Reset the form after saving the movie
+//         $("form").trigger("reset");
+//     }).fail((jqXHR) => {
+//         $("#error").html("The review could not be added.");
+//     });
+//   });
+// }
+//
+// function getReviews(movieId){
+//
+// }
 
 
 //load functions on page laod
 $(() => {
   getMovieInfo();
-  postReview();
-  getReviews();
+  // postReview();
+  // getReviews();
 });
 
 /*  Movie page elements
-    
+
     Attributes:
     <h2 id="movieTitle">Spider-Man 2</h2>
     <p class="attr" id="movieDetails">Action, Adventure | 2h 7m | 30 June 2004</p> <!-- Genre | Runtime | Release date -->
     <h4 id="movieDesc"> DESCRIPTION </h4>
-    
+
     Categories:
     <h5 class="card-title" id="musicCat">Music: 9.5/10</h5>
     <h5 class="card-title" id="dialCat">Dialogue: 9.8/10</h5>
@@ -62,7 +90,7 @@ $(() => {
             </div>
         </div>
     </div>
-    
+
     New Review Form:
       Rating categories input field:
       <input type="text" class="form-control form-rat" id="musicRev" placeholder="Music">
@@ -75,11 +103,11 @@ $(() => {
       <h4 id="formError" style="color: red; text-align: center;"></h3>
 
       Review submit button ID: submitRev
-    
+
     Index Elements:
     cposter1 - cposter8 = Carousel Poster Image Id's
     toppost1 - toppost4 = 4 Top Reccomendation's Poster Image Id's
     topname 1 - topname4 = 4 Top Reccomendation's Movie Names
     topbio1 - topbio4 = 4 Top Reccomendation's Movie Bios
-    
+
 */
