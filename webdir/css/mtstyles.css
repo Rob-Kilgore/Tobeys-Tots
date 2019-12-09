@@ -2,7 +2,7 @@
 
 body {
     background-image: url(pat.jpeg);
-    font-family: roboto;
+   
     color: black;
     font-size: 12px;
 }
@@ -30,6 +30,9 @@ input:focus, textarea:focus {
 .movieDesc {
     color: #DEDEB3
 }
+.col{
+    
+}
 .coll{
     flex: auto;
     justify-content: space-around;
@@ -38,10 +41,18 @@ input:focus, textarea:focus {
 .attr {
     font-weight: 200;
 }
-
+a{
+    color:goldenrod;
+}
 .border-dark {
-    background-color: #ACACAC;
+    background-image: url(pat3.jpg);
     border: 8px solid goldenrod;
+}
+h6{
+    font-size: 30px;
+}
+ol{
+    font-size: 20px;
 }
 .sect{
     
@@ -50,17 +61,18 @@ input:focus, textarea:focus {
     border-width: 5px;
     border-color: black;
 }
+
 .wrapper{
     background-color: black;
     height: 5px;
 }
 .cardbody{
-    background-color: #acacac;
+    background-image: url(pat3.jpg);
 }
 .reviewCard {
     width:95%;
     margin: 20px;
-    background-color: beige;
+    background-image: url(pat3.jpg);
 }
 .form-row {
     padding-top: 5px;
@@ -77,6 +89,12 @@ input:focus, textarea:focus {
 .form-rat:hover {
     background-color: #FFF9AC;
 }
+.card{
+    width: 27rem;
+    display: inline-block;
+    background-image: url(pat3.jpg);
+    font-family: 'Inknut Antiqua', serif;
+}
 .form-rat:focus {
     height: 50px;
     background-color: #FFF9AC;
@@ -91,4 +109,10 @@ input:focus, textarea:focus {
 }
 #submitRev:hover {
     border: 5px solid goldenrod;
+}
+.review-body{
+    background-image: url(pat2.jpg);
+}
+.row{
+    flex-direction: row;
 }
