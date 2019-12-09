@@ -33,6 +33,10 @@ function getMovieInfo(){
   });
 }
 
+function getReviews(movieId){
+  
+}
+
 //function to post review of movie
 // function postReview(){
 //   $("#saveBtn").click(() => {
@@ -51,9 +55,7 @@ function getMovieInfo(){
 //   });
 // }
 //
-// function getReviews(movieId){
-//
-// }
+
 
 
 //load functions on page laod
