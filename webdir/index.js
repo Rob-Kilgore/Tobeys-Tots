@@ -32,7 +32,14 @@ function showTopMoviesByCategory(){
     acting = data;
   });
   for(var i=0; i<acting.length; i++){
-    $topActing.append('<li> <a href="./movie.html?id='+acting[i].OID+'">'+acting[i].title+'</a></li>');
+    if(acting[i].title!="TBD"){
+      $topActing.append('<li> <a href="./movie.html?id='+acting[i].OID+'">'+acting[i].title+'</a></li>');
+    }
+    else{
+      $.get("/api/movie/"+acting[i].OID, function( data ){
+        $topActing.append('<li> <a href="./movie.html?id='+acting[i].OID+'">'+data.title+'</a></li>');
+      });
+    }
   }
 
   let music = new Array();
@@ -40,7 +47,14 @@ function showTopMoviesByCategory(){
     music = data;
   });
   for(var i=0; i<music.length; i++){
-    $topMusic.append('<li> <a href="./movie.html?id='+music[i].OID+'">'+music[i].title+'</a></li>');
+    if(music[i].title!="TBD"){
+      $topMusic.append('<li> <a href="./movie.html?id='+music[i].OID+'">'+music[i].title+'</a></li>');
+    }
+    else{
+      $.get("/api/movie/"+music[i].OID, function( data ){
+        $topMusic.append('<li> <a href="./movie.html?id='+music[i].OID+'">'+data.title+'</a></li>');
+      });
+    }
   }
 
   let story = new Array();
@@ -48,7 +62,14 @@ function showTopMoviesByCategory(){
     story = data;
   });
   for(var i=0; i<story.length; i++){
-    $topStory.append('<li> <a href="./movie.html?id='+story[i].OID+'">'+story[i].title+'</a></li>');
+    if(story[i].title!="TBD"){
+      $topStory.append('<li> <a href="./movie.html?id='+story[i].OID+'">'+story[i].title+'</a></li>');
+    }
+    else{
+      $.get("/api/movie/"+story[i].OID, function( data ){
+        $topStory.append('<li> <a href="./movie.html?id='+story[i].OID+'">'+data.title+'</a></li>');
+      });
+    }
   }
 
 
