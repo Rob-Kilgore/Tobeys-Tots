@@ -11,7 +11,15 @@ body {
 	margin-top: 15px;
 	margin-right: 10px;
 }
-
+.moviePoster{
+    flex-direction: row;
+}
+.col{
+    width: 12rem;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    
+}
 input:focus, textarea:focus {
 	outline: none;
 }
@@ -44,7 +52,10 @@ input:focus, textarea:focus {
 a{
     color:goldenrod;
 }
-.border-dark {
+.reviewbox {
+    height: 8rem;
+    width: 200px;
+    margin: 8px;
     background-image: url(pat3.jpg);
     border: 8px solid goldenrod;
 }
