@@ -61,20 +61,34 @@ function getReviews(movieId){
   movieId=getQueryVariable('id');
   // console.log("id being passed: "+movieId);
   $.get("/api/movie/"+movieId+"/reviews", function( data ){
+    if(data==-1)
+    {
+      window.alert("Could not find a movie with ID " + movieId);
+    }
     // console.log("body: "+data.scores[0]);
     dbID=data._id;
     //console.log(dbID)
+    var scoreStr = []
+    for(var i = 0; i < 10; i++)
+    {
+      if(data.scores[i] != undefined) {
+        scoreStr.push((Math.round(data.scores[i] * 100) / 100) + '/10');
+      }
+      else {
+        scoreStr.push("N/A");
+      }
+    }
     if(data.scores){
-      $music.append('<h5 class="card-title">Music: '+data.scores[0]+'/10</h5><p class="card-text rating">(From '+data.numReviews[0]+' ratings)</p>');
-      $vfx.append('<h5 class="card-title">Visual Effects: '+data.scores[1]+'/10</h5><p class="card-text rating">(From '+data.numReviews[1]+' ratings)</p>');
-      $dialogue.append('<h5 class="card-title">Dialogue: '+data.scores[2]+'/10</h5><p class="card-text rating">(From '+data.numReviews[2]+' ratings)</p>');
-      $cinemetogrophy.append('<h5 class="card-title">Cinematography: '+data.scores[3]+'/10</h5><p class="card-text rating">(From '+data.numReviews[3]+' ratings)</p>');
-      $editing.append('<h5 class="card-title">Editing: '+data.scores[4]+'/10</h5><p class="card-text rating">(From '+data.numReviews[4]+' ratings)</p>');
-      $story.append('<h5 class="card-title">Story: '+data.scores[5]+'/10</h5><p class="card-text rating">(From '+data.numReviews[5]+' ratings)</p>');
-      $acting.append('<h5 class="card-title">Acting: '+data.scores[6]+'/10</h5><p class="card-text rating">(From '+data.numReviews[6]+' ratings)</p>');
-      $originality.append('<h5 class="card-title">Originality: '+data.scores[7]+'/10</h5><p class="card-text rating">(From '+data.numReviews[7]+' ratings)</p>');
-      $atmosphere.append('<h5 class="card-title">Atmosphere: '+data.scores[8]+'/10</h5><p class="card-text rating">(From '+data.numReviews[8]+' ratings)</p>');
-      $impact.append('<h5 class="card-title">Impact: '+data.scores[9]+'/10</h5><p class="card-text rating">(From '+data.numReviews[9]+' ratings)</p>');
+      $music.append('<h5 class="card-title">Music: '+scoreStr[0]+'</h5><p class="card-text rating">(From '+data.numReviews[0]+' ratings)</p>');
+      $vfx.append('<h5 class="card-title">Visual Effects: '+scoreStr[1]+'</h5><p class="card-text rating">(From '+data.numReviews[1]+' ratings)</p>');
+      $dialogue.append('<h5 class="card-title">Dialogue: '+scoreStr[2]+'</h5><p class="card-text rating">(From '+data.numReviews[2]+' ratings)</p>');
+      $cinemetogrophy.append('<h5 class="card-title">Cinematography: '+scoreStr[3]+'</h5><p class="card-text rating">(From '+data.numReviews[3]+' ratings)</p>');
+      $editing.append('<h5 class="card-title">Editing: '+scoreStr[4]+'</h5><p class="card-text rating">(From '+data.numReviews[4]+' ratings)</p>');
+      $story.append('<h5 class="card-title">Story: '+scoreStr[5]+'</h5><p class="card-text rating">(From '+data.numReviews[5]+' ratings)</p>');
+      $acting.append('<h5 class="card-title">Acting: '+scoreStr[6]+'</h5><p class="card-text rating">(From '+data.numReviews[6]+' ratings)</p>');
+      $originality.append('<h5 class="card-title">Originality: '+scoreStr[7]+'</h5><p class="card-text rating">(From '+data.numReviews[7]+' ratings)</p>');
+      $atmosphere.append('<h5 class="card-title">Atmosphere: '+scoreStr[8]+'</h5><p class="card-text rating">(From '+data.numReviews[8]+' ratings)</p>');
+      $impact.append('<h5 class="card-title">Impact: '+scoreStr[9]+'</h5><p class="card-text rating">(From '+data.numReviews[9]+' ratings)</p>');
     }
   });
 }

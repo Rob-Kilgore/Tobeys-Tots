@@ -38,9 +38,17 @@ router.get('/:movieId/reviews', function(req, res){
   dbInterface.getMovieByID(id, (body) => {
     // console.log(body);
     if(body===-1){
-      dbInterface.addMovie(id, body.title, body.year, (body) => {
-        res.json(body);
-      })
+      dbInterface.getOMDBObjectByID(id, (movie) => {
+        //console.log(movie);
+        if(movie.status_code==34) {
+          res.json(-1);
+        }
+        else {
+          dbInterface.addMovie(id, movie.title, movie.release_date.substr(0, 4), (dbMovie) => {
+            res.json(dbMovie);
+          });
+        }
+      });
     }
     else res.json(body);
   })
