@@ -2,7 +2,7 @@ var
 	carousel = document.querySelector('.carousel'),
 	figure = carousel.querySelector('figure'),
 	nav = carousel.querySelector('nav'),
-	numImages = figure.childElementCount,
+	numImages = 8,
 	theta =  2 * Math.PI / numImages,
 	currImage = 0
 ;
