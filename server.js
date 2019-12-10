@@ -80,6 +80,9 @@ catch(err) {
 
 //express routes (functions to be updated)
 router.use(bodyParser.json());
+router.use(bodyParser.urlencoded({
+    extended: false
+}));
 
 // This will use the static middleware
 router.use(express.static('webdir'));

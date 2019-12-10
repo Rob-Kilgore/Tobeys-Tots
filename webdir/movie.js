@@ -11,6 +11,7 @@ function getQueryVariable(variable) {
 }
 
 let movieId=getQueryVariable('id');
+let dbID='';
 
 //function to get info on movie
 function getMovieInfo(){
@@ -61,6 +62,8 @@ function getReviews(movieId){
   // console.log("id being passed: "+movieId);
   $.get("/api/movie/"+movieId+"/reviews", function( data ){
     // console.log("body: "+data.scores[0]);
+    dbID=data._id;
+    console.log(dbID)
     if(data.scores){
       $music.append('<h5 class="card-title">Music: '+data.scores[0]+'/10</h5><p class="card-text rating">(From '+data.numReviews[0]+' ratings)</p>');
       $vfx.append('<h5 class="card-title">Visual Effects: '+data.scores[1]+'/10</h5><p class="card-text rating">(From '+data.numReviews[1]+' ratings)</p>');
@@ -80,23 +83,31 @@ function getReviews(movieId){
 // <p class="card-text rating">(From 56 ratings)</p> -->
 
 //function to post review of movie
-// function postReview(){
-//   $("#saveBtn").click(() => {
-//       //get all the fields filled routes
-//       $.ajax({
-//         type: "POST",
-//         url: "/server/movies/"+movieId+"/review",
-//         data: JSON.stringify(movie),
-//         contentType: "application/json"
-//     }).done((data) => {
-//         // Reset the form after saving the movie
-//         $("form").trigger("reset");
-//     }).fail((jqXHR) => {
-//         $("#error").html("The review could not be added.");
-//     });
-//   });
-// }
-//
+function postReview(){
+  const $reviewForm=$("#reviewForm");
+  $reviewForm.submit(() => {
+      console.log("form submitted");
+      // console.log("form: "+$reviewForm.serializeArray());
+      let review=$reviewForm.serializeArray();
+      console.log(review);
+      //get all the fields filled routes
+      $.post( "/api/movie/"+dbID+"/postReview", review, "application/json");
+    //   $.ajax({
+    //     type: "POST",
+    //     url: "/api/movie/"+movieId+"/postReview",
+    //     data: review,
+    //     contentType: "application/json"
+    // }).done((data) => {
+    //     // Reset the form after saving the movie
+    //     $("#reviewForm").trigger("reset");
+    // }).fail((jqXHR) => {
+    //     $("#error").html("The review could not be added.");
+    // });
+    $reviewForm.trigger("reset");
+    event.preventDefault();
+  });
+}
+
 
 
 
@@ -104,7 +115,7 @@ function getReviews(movieId){
 $(() => {
   getMovieInfo();
   getReviews();
-  // postReview();
+  postReview();
 });
 
 /*  Movie page elements

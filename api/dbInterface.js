@@ -121,12 +121,12 @@ module.exports = {
             });
     },
 
-    addMovie: function(OID, title, year, callback)
+    addMovie: function(OID, callback)
     {
         var movie = new Movie({
             OID: OID,
-            title: title,
-            year: year,
+            title: 'TBD',
+            year: '2019',
             numReviews: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         });
         // wait for connection before doing stuff

@@ -37,7 +37,12 @@ router.get('/:movieId/reviews', function(req, res){
   // console.log("id: "+id);
   dbInterface.getMovieByID(id, (body) => {
     // console.log(body);
-    res.json(body);
+    if(body===-1){
+      dbInterface.addMovie(id, (body) => {
+        res.json(body);
+      })
+    }
+    else res.json(body);
   })
 })
 
@@ -52,11 +57,9 @@ router.get('/search/:movieTitle', function(req, res){
 
 router.post('/:movieId/postReview', function(req, res){
   let movieId = req.params.movieId;
-  let review = req.body;
-  let userId = review.userId;
-  let scores = review.scores;
-  let text = review.text;
-  dbInterface.addReview(movieId, userId, scores, text);
+  // console.log(req.body.music);
+  let review=[req.body.music, req.body.dialogue, req.body.editing, req.body.originality, req.body.vfx, req.body.cinemetogrophy, req.body.acting, req.body.atmosphere, req.body.impact];
+  dbInterface.addReview(movieId, '5dcda19350adac312cc9b128', review, req.body.textReview);
   res.status(201).json(movieId);
 })
 
