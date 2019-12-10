@@ -28,7 +28,7 @@ const dbUrl = "mongodb+srv://326-admin:" + pw + "@movietime-kuraq.mongodb.net/" 
 
 try
 {
-     dbInterface.connect(dbUrl, (con) => {
+     dbInterface.connect(dbUrl, APIKey, (con) => {
           //console.log(dbInterface.getOMDBObjectByTitle(APIKey,'Spider-Man', 2002));
           /*console.log(dbInterface.getOMDBObjectByTitle(APIKey,'Spider-Man', null));
           console.log("ID:");*/
@@ -87,7 +87,7 @@ router.use(bodyParser.urlencoded({
 // This will use the static middleware
 router.use(express.static('webdir'));
 
-// Mount our API router to the main router with the `/api/songs` prefix.
+// Mount our API router to the main router with the `/api/movie` prefix.
 router.use('/api/movie', require('./api/movie'));
 
 

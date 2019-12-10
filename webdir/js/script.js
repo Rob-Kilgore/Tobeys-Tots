@@ -9,6 +9,7 @@ var
 	
 nav.addEventListener('click', onClick, true);
 
+
 function onClick(e) {
 	e.stopPropagation();
 	

@@ -74,7 +74,6 @@ function showTopMoviesByCategory(){
 
 
 }
-
 $(() => {
   showPopularMovies();
   showTopMoviesByCategory();

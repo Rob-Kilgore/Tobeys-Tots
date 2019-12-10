@@ -25,7 +25,7 @@ function getMovieInfo(){
   $details.empty();
   $title.empty();
 
-  console.log('id: '+movieId);
+  //console.log('id: '+movieId);
   $.get("/api/movie/"+movieId, function( data ){
       // console.log(data);
       $poster.append('<img src="https://image.tmdb.org/t/p/w342'+data.poster_path+'" class="poster">')
@@ -63,7 +63,7 @@ function getReviews(movieId){
   $.get("/api/movie/"+movieId+"/reviews", function( data ){
     // console.log("body: "+data.scores[0]);
     dbID=data._id;
-    console.log(dbID)
+    //console.log(dbID)
     if(data.scores){
       $music.append('<h5 class="card-title">Music: '+data.scores[0]+'/10</h5><p class="card-text rating">(From '+data.numReviews[0]+' ratings)</p>');
       $vfx.append('<h5 class="card-title">Visual Effects: '+data.scores[1]+'/10</h5><p class="card-text rating">(From '+data.numReviews[1]+' ratings)</p>');

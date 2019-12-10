@@ -3,7 +3,7 @@ const dbInterface = require('./dbInterface');
 
 // Add redirects to html files.
 router.get('/', (req, res) => {
-  dbInterface.getPopularMovies('a05a8eaa14c959a0ea671b72e74db2a1', (body) => {
+  dbInterface.getPopularMovies((body) => {
        // console.log(body);
        res.json(body);
   });
@@ -22,7 +22,7 @@ router.get('/:movieId', function(req, res){
   // console.log('id: '+movieId);
   //let movie = dbInterface.getMovieByID(movieId);
   //if(movie === -1){
-    dbInterface.getOMDBObjectByID('a05a8eaa14c959a0ea671b72e74db2a1', movieId, (body) => {
+    dbInterface.getOMDBObjectByID(movieId, (body) => {
       // console.log(body);
       let movie=body;
       // console.log(movie);
@@ -38,7 +38,7 @@ router.get('/:movieId/reviews', function(req, res){
   dbInterface.getMovieByID(id, (body) => {
     // console.log(body);
     if(body===-1){
-      dbInterface.addMovie(id, (body) => {
+      dbInterface.addMovie(id, body.title, body.year, (body) => {
         res.json(body);
       })
     }
@@ -48,11 +48,19 @@ router.get('/:movieId/reviews', function(req, res){
 
 router.get('/search/:movieTitle', function(req, res){
   let movieTitle = req.params.movieTitle;
-  let movie = dbInterface.getMovieByTitle();
-  if(movie === -1){
-    movie = dbInterface.getOMDBObjectByTitle();
+  let year = null;
+  // movie title includes a year
+  if(/^.* \([0-9]{4}\)$/.test(movieTitle)) {
+    year = parseInt(movieTitle.substr(movieTitle.length - 5, 4));
+    movieTitle = movieTitle.substr(0, movieTitle.length - 7);
   }
-  res.json(movie);
+  dbInterface.getOrCreateMovie(movieTitle, year, (body) => {
+    res.json(body);
+  });
+  /*if(movie === -1){
+    movie = dbInterface.getOMDBObjectByTitle();
+  }*/
+  //res.json(-1);
 })
 
 router.post('/:movieId/postReview', function(req, res){

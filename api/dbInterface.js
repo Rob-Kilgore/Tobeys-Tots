@@ -1,6 +1,7 @@
 const request = require("request");
 var mongoose = require("mongoose");
 var ObjectId = mongoose.Types.ObjectId;
+let APIKey = undefined;
 
 var userSchema = new mongoose.Schema({
     email:          { type: String, required: true, unique: true },
@@ -84,8 +85,9 @@ var userSchema = new mongoose.Schema({
     }
 
 module.exports = {
-    connect: function(dbUrl, callback)
+    connect: function(dbUrl, localAPIKey, callback)
     {
+        APIKey = localAPIKey;
         mongoose.connect(dbUrl, {useNewUrlParser: true, useUnifiedTopology: true}, function(err) {
             if (err) {
                 throw err;
@@ -121,12 +123,12 @@ module.exports = {
             });
     },
 
-    addMovie: function(OID, callback)
+    addMovie: function(OID, title, year, callback)
     {
         var movie = new Movie({
             OID: OID,
-            title: 'TBD',
-            year: '2019',
+            title: title,
+            year: year,
             numReviews: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         });
         // wait for connection before doing stuff
@@ -162,7 +164,7 @@ module.exports = {
             });
     },
 
-    getOMDBObjectByID: function(APIKey, OID, callback)
+    getOMDBObjectByID: function(OID, callback)
     {
         request('https://api.themoviedb.org/3/movie/'+ OID + '?api_key=' + APIKey + '&language=en-US', {json: true }, (err, res, body) => {
             if(err) { throw err; }
@@ -173,7 +175,7 @@ module.exports = {
 
     },
 
-    getOMDBObjectByTitle: function(APIKey, title, year, callback)
+    getOMDBObjectByTitle: function(title, year, callback)
     {
         var yearStr = ''
         if(year!= null)
@@ -197,7 +199,7 @@ module.exports = {
 
     },
 
-    getPopularMovies: function(APIKey, callback)
+    getPopularMovies: function(callback)
     {
         var requestStr = 'https://api.themoviedb.org/3/movie/popular?api_key='
         + APIKey + '&language=en-US&page=1';
@@ -216,8 +218,8 @@ module.exports = {
 
     },
 
-    getOrCreateMovie: function(title, year, APIKey, callback) {
-        this.getOMDBObjectByTitle(APIKey, title, year, (body) => {
+    getOrCreateMovie: function(title, year, callback) {
+        this.getOMDBObjectByTitle(title, year, (body) => {
             if(body == -1) {
                 callback(-1);
             }
