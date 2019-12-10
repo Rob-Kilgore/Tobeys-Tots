@@ -58,7 +58,7 @@ router.get('/search/:movieTitle', function(req, res){
 router.post('/:movieId/postReview', function(req, res){
   let movieId = req.params.movieId;
   // console.log(req.body.music);
-  let review=[req.body.music, req.body.dialogue, req.body.editing, req.body.originality, req.body.vfx, req.body.cinemetogrophy, req.body.acting, req.body.atmosphere, req.body.impact];
+  let review=[parseInt(req.body.music), parseInt(req.body.dialogue), parseInt(req.body.editing), parseInt(req.body.originality), parseInt(req.body.vfx), parseInt(req.body.cinemetogrophy), parseInt(req.body.acting), parseInt(req.body.atmosphere), parseInt(req.body.impact)];
   dbInterface.addReview(movieId, '5dcda19350adac312cc9b128', review, req.body.textReview);
   res.status(201).json(movieId);
 })
