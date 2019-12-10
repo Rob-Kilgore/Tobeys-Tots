@@ -5,7 +5,12 @@ function searchInput(e) {
     var searchBar = document.getElementById('searchBar');
     
     $.get("/api/movie/search/" + searchBar.value, function( data ){
-      window.location.replace("/movie.html?id=" + data.OID);
+      if(data == -1) {
+        window.alert("No movies found for search: " + searchBar.value);
+      }
+      else {
+        window.location.replace("/movie.html?id=" + data.OID);
+      }
       //res.redirect("./movie.html?id=" + data.OID);
     });
 	}
