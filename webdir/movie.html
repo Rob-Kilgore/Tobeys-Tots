@@ -8,16 +8,21 @@
     <!-- Bootstrap -->
 	<link href="css/bootstrap-4.3.1.css" rel="stylesheet">
     <link href="css/mtstyles.css" rel="stylesheet" type="text/css">
-	
+      <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    	<script src="js/jquery-3.3.1.min.js"></script>
+      <script src="movie.js"></script>
+      <script  src="js/search.js"></script>
+
   </head>
   <body>
-      
+
   	<!-- Header -->
   <div class="row" style="margin-top: 20px; margin-bottom: 20px;">
 		  <div class="col-sm-2">
 		  	<a href="index.html"><img src="images/movie_time.jpg" height="80px" width="200px" style="margin-left: 40px"></a>
     </div>
-			
+
 		  <div class="col-lg-10" style="padding-right: 30px;">
 			<!-- Search bar -->
 			<div class="p-2 bg-light rounded rounded-pill shadow-sm mb-4">
@@ -25,158 +30,231 @@
 				  <div class="input-group-prepend">
 					<button id="button-addon2" type="submit" class="btn btn-link text-warning"><i class="fa fa-search"></i></button>
 				  </div>
-				  <input type="search" placeholder="Search" aria-describedby="button-addon2" class="form-control border-0 bg-light">
+				  <input type="search" placeholder="Search for a movie: Title (year)" results = "0" aria-describedby="button-addon2" class="form-control border-0 bg-light" id=searchBar>
 				</div>
 		  	</div>
 		  </div>
       </div>
-      
-      
-    <div class="row movie">
-      <div class="col-xl-3">
-        <img src="images/sm2.jpg" class="poster">
+
+
+    <div class="row movieInfo">
+      <div id="moviePoster" class="col-xl-3">
+        <!-- <img src="images/sm2.jpg" class="poster"> -->
       </div>
-        
+
       <div class="col-xl-9 movieBody">
-        <h2 id="movieTitle">Spider-Man 2</h2>
-        <p class="attr" id="movieDetails">Action, Adventure | 2h 7m | 30 June 2004</p> <!-- Genre | Runtime | Release date -->
+        <h2 id="movieTitle" style="font-weight:1000;">
+          <!-- Spider-Man 2 -->
+        </h2>
+        <p class="attr" id="movieDetails">
+          <!-- Action, Adventure | 2h 7m | 30 June 2004 -->
+        </p> <!-- Genre | Runtime | Release date -->
         <br>
-        <h4 id="movieDesc">When a failed nuclear fusion experiment results in an explosion that kills his wife, Dr. Otto Octavius (Alfred Molina) is transformed into Dr. Octopus, a cyborg with deadly metal tentacles. Doc Ock blames Spider-Man (Tobey Maguire) for the accident and seeks revenge. Meanwhile, Spidey's alter ego, Peter Parker, faces fading powers and self-doubt. Complicating matters are his best friend's (James Franco) hatred for Spider-Man and his true love's (Kirsten Dunst) sudden engagement to another man.</h4>
+        <h4 id="movieDesc">
+          <!-- When a failed nuclear fusion experiment results in an explosion that kills his wife, Dr. Otto Octavius (Alfred Molina) is transformed into Dr. Octopus, a cyborg with deadly metal tentacles. Doc Ock blames Spider-Man (Tobey Maguire) for the accident and seeks revenge. Meanwhile, Spidey's alter ego, Peter Parker, faces fading powers and self-doubt. Complicating matters are his best friend's (James Franco) hatred for Spider-Man and his true love's (Kirsten Dunst) sudden engagement to another man. -->
+        </h4>
         <br>
-        <h5>Ratings:</h5>
-          
+
+
           <div class="row">
             <div class="col">
-                  <div class="card border-dark mb-3" style="max-width: 18rem;">
-              <div class="card-body text-dark">
-                <h5 class="card-title" id="musicCat">Music: 9.5/10</h5>
-                <p class="card-text rating">(From 56 ratings)</p>
+                  <div class="reviewbox"  >
+              <div class="card-body text-dark" id="musicCat">
+                <!-- <h5 class="card-title">Music: 9.5/10</h5>
+                <p class="card-text rating">(From 56 ratings)</p> -->
               </div>
             </div>
-              
+
             </div>
-            
+
             <div class="col">
-              <div class="card border-dark mb-3" style="max-width: 18rem;">
-              <div class="card-body text-dark">
-                <h5 class="card-title" id="dialCat">Dialogue: 9.8/10</h5>
-                <p class="card-text rating">(From 50 ratings)</p>
+              <div class="reviewbox"  >
+              <div class="card-body text-dark" id="dialCat">
+                <!-- <h5 class="card-title">Dialogue: 9.8/10</h5>
+                <p class="card-text rating">(From 50 ratings)</p> -->
               </div>
             </div>
             </div>
-              
+
             <div class="col">
-              <div class="card border-dark mb-3" style="max-width: 18rem;">
-              <div class="card-body text-dark">
-                <h5 class="card-title" id="storyCat">Story: 10/10</h5>
-                <p class="card-text rating">(From 39 ratings)</p>
+              <div class="reviewbox"  >
+              <div class="card-body text-dark" id="storyCat">
+                <!-- <h5 class="card-title">Story: 10/10</h5>
+                <p class="card-text rating">(From 39 ratings)</p> -->
               </div>
             </div>
             </div>
-              
+
             <div class="col">
-              <div class="card border-dark mb-3" style="max-width: 18rem;">
-              <div class="card-body text-dark">
-                <h5 class="card-title" id="editCat">Editing: 8.8/10</h5>
-                <p class="card-text rating">(From 47 ratings)</p>
+              <div class="reviewbox"  >
+              <div class="card-body text-dark" id="editCat">
+                <!-- <h5 class="card-title">Editing: 8.8/10</h5>
+                <p class="card-text rating">(From 47 ratings)</p> -->
               </div>
             </div>
             </div>
-              
+
             <div class="col">
-              <div class="card border-dark mb-3" style="max-width: 18rem;">
-              <div class="card-body text-dark">
-                <h5 class="card-title" id="origCat">Originality: 8.7/10</h5>
-                <p class="card-text rating">(From 47 ratings)</p>
+              <div class="reviewbox"  >
+              <div class="card-body text-dark" id="origCat">
+                <!-- <h5 class="card-title">Originality: 8.7/10</h5>
+                <p class="card-text rating">(From 47 ratings)</p> -->
               </div>
             </div>
             </div>
-              
+
           </div>
-          
-          
+
+
           <div class="row">
             <div class="col">
 
-            <div class="card border-dark mb-3" style="max-width: 18rem;">
-              <div class="card-body text-dark">
-                <h5 class="card-title" id="visCat">Visual Effects: 10/10</h5>
-                <p class="card-text"> (From 47 ratings)</p>
+            <div class="reviewbox"  >
+              <div class="card-body text-dark" id="visCat">
+                <!-- <h5 class="card-title">Visual Effects: 10/10</h5>
+                <p class="card-text"> (From 47 ratings)</p> -->
               </div>
             </div>
-              
+
             </div>
-            
+
             <div class="col">
 
-            <div class="card border-dark mb-3" style="max-width: 18rem;">
-              <div class="card-body text-dark">
-                <h5 class="card-title" id="cineCat">Cinematography: 9/10</h5>
-                <p class="card-text">(From 44 ratings)</p>
+            <div class="reviewbox"  >
+              <div class="card-body text-dark" id="cineCat">
+                <!-- <h5 class="card-title">Cinematography: 9/10</h5>
+                <p class="card-text">(From 44 ratings)</p> -->
               </div>
             </div>
             </div>
-              
+
             <div class="col">
 
-            <div class="card border-dark mb-3" style="max-width: 18rem;">
-              <div class="card-body text-dark">
-                <h5 class="card-title" id="actCat">Acting: 8.5/10</h5>
-                <p class="card-text">(From 46 ratings)</p>
+            <div class="reviewbox"  >
+              <div class="card-body text-dark" id="actCat">
+                <!-- <h5 class="card-title">Acting: 8.5/10</h5>
+                <p class="card-text">(From 46 ratings)</p> -->
               </div>
             </div>
             </div>
-              
+
             <div class="col">
 
-            <div class="card border-dark mb-3" style="max-width: 18rem;">
-              <div class="card-body text-dark">
-                <h5 class="card-title" id="atmCat">Atmosphere: 9.1/10</h5>
-                <p class="card-text">(From 55 ratings)</p>
+            <div class="reviewbox"  >
+              <div class="card-body text-dark" id="atmCat">
+                <!-- <h5 class="card-title">Atmosphere: 9.1/10</h5>
+                <p class="card-text">(From 55 ratings)</p> -->
               </div>
             </div>
             </div>
-              
+
             <div class="col">
 
-            <div class="card border-dark mb-3" style="max-width: 18rem;">
-              <div class="card-body text-dark">
-                <h5 class="card-title" id="impCat">Impact: 9.4/10</h5>
-                <p class="card-text">(From 51 ratings)</p>
+            <div class="reviewbox"  >
+              <div class="card-body text-dark" id="impCat">
+                <!-- <h5 class="card-title">Impact: 9.4/10</h5>
+                <p class="card-text">(From 51 ratings)</p> -->
               </div>
             </div>
             </div>
-              
+
           </div>
-          
-          
-          
+
       </div>
   </div>
-      
-  <!-- Cast members -->
-  <div class="row">
-      <div class="col">
-          <div class="card" style="width:250px; margin: 20px; background-color: beige;">
-          <img class="card-img-top" src="images/tobey.jpg" alt="Card image" id="castImg1">
-          <div class="card-body">
-            <h4 class="card-title" id="castName1">Tobey Maguire</h4>
+
+  <div class="row" id="castRow">
+      <!-- Reviews -->
+      <!-- <div class="col sect">
+          <div class="card reviewCard">
+              <div class="card-body">
+                <h4 class="card-title" id="review1">Text Review 1</h4>
+              </div>
           </div>
-        </div>  
+          <div class="card reviewCard">
+              <div class="card-body">
+                <h4 class="card-title" id="review2">Text Review 2</h4>
+              </div>
+          </div>
+
+      </div> -->
+
+      <!-- New Review Form -->
+      <div class="col sect">
+          <div class="card" style="margin-top: 10px; margin-bottom: 15px; background-color: #B72927; border: 10px solid goldenrod">
+              <div class="card-body">
+                <h1 style="color: black; text-align: center; font-weight: 1000;">Leave a review.</h1>
+              </div>
+          </div>
+
+
+            <form input type="submit" method="post" id="reviewForm"  style="width: 95%; padding-left: 5px;">
+                <h4 id="formError" style="color: red; text-align: center;"></h3>
+                <label style="padding-top: 10px; color: #ABABAB; padding-left: 5px; font-size: 18pt;">Rate each category out of 10.</label>
+              <div class="form-row">
+                <div class="col form-cat">
+                  <input type="text" class="form-control form-rat" id="musicRev" placeholder="Music" name="music">
+                </div>
+
+                <div class="col form-cat">
+                  <input type="text" class="form-control form-rat" id="dialRev" placeholder="Dialogue" name="dialogue">
+                </div>
+
+                <div class="col form-cat">
+                  <input type="text" class="form-control form-rat" id="storyRev" placeholder="Story" name="story">
+                </div>
+
+                <div class="col form-cat">
+                  <input type="text" class="form-control form-rat" id="editRev" placeholder="Editing" name="editing">
+                </div>
+
+                <div class="col form-cat">
+                  <input type="text" class="form-control form-rat" id="origRev" placeholder="Originality" name="originality">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="col form-cat">
+                  <input type="text" class="form-control form-rat" id="visRev" placeholder="Visual Effects" name="vfx">
+                </div>
+
+                <div class="col form-cat">
+                  <input type="text" class="form-control form-rat" id="cineRev" placeholder="Cinematography" name="cinemetogrophy">
+                </div>
+
+                <div class="col form-cat">
+                  <input type="text" class="form-control form-rat" id="actingRev" placeholder="Acting" name="acting">
+                </div>
+
+                <div class="col form-cat">
+                  <input type="text" class="form-control form-rat" id="atmRev" placeholder="Atmosphere" name="atmosphere">
+                </div>
+
+                <div class="col form-cat">
+                  <input type="text" class="form-control form-rat" id="impRev" placeholder="Impact" name="impact">
+                </div>
+              </div>
+
+              <div class="form-group" style="padding-left: 5px;">
+                <label for="textReview" style="padding-top: 10px; color: #ABABAB; font-size: 18pt;">What did you think of the movie?</label>
+                <textarea class="form-control" id="textReview" name="textReview" rows="4" style="height: 100px;"></textarea>
+
+                <button type="submit" id="submitRev" class="btn btn-primary" onClick="window.location.reload();" style="margin-top: 30px; background-color: #B72927; width: 100%; height: 50px; color: black; font-weight: bold;">Submit Review</button>
+
+              </div>
+
+            </form>
       </div>
-      
-      <div class="col">
-          <h1 style="vertical-align: middle">......</h1>
-      </div>
+
   </div>
-    
-      
-      
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
-	<script src="js/jquery-3.3.1.min.js"></script>
+
+
+
+
+
 
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="js/popper.min.js"></script> 
+  <script src="js/popper.min.js"></script>
   <script src="js/bootstrap-4.3.1.js"></script>
 </body>
 </html>

@@ -1,14 +1,25 @@
 @charset "UTF-8";
 
 body {
-    background-color: #004C54;
+    background-image: url(pat.jpeg);
+   
+    color: black;
+    font-size: 12px;
 }
 
 .rounded-pill {
 	margin-top: 15px;
 	margin-right: 10px;
 }
-
+.moviePoster{
+    flex-direction: row;
+}
+.col{
+    width: 12rem;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    
+}
 input:focus, textarea:focus {
 	outline: none;
 }
@@ -17,7 +28,7 @@ input:focus, textarea:focus {
     padding: 20px;
     border-top: 5px solid black;
     border-bottom: 5px solid black;
-    background-color: #960018;
+    background-image: url(pat2.jpg);
 }
 
 .poster {
@@ -27,12 +38,92 @@ input:focus, textarea:focus {
 .movieBody {
     color: #DEDEB3
 }
-
+.col{
+    
+}
+.coll{
+    flex: auto;
+    justify-content: space-around;
+    padding: 3px;
+}
 .attr {
     font-weight: 200;
 }
-
-.border-dark {
-    background-color: #ACACAC;
+a{
+    color:goldenrod;
+}
+.reviewbox {
+    height: 8rem;
+    width: 200px;
+    margin: 8px;
+    background-image: url(pat3.jpg);
     border: 8px solid goldenrod;
+}
+h6{
+    font-size: 30px;
+}
+ol{
+    font-size: 20px;
+}
+.sect{
+    
+    width: auto;
+    border-style: solid;
+    border-width: 5px;
+    border-color: black;
+}
+
+.wrapper{
+    background-color: black;
+    height: 5px;
+}
+.cardbody{
+    background-image: url(pat3.jpg);
+}
+.reviewCard {
+    width:95%;
+    margin: 20px;
+    background-image: url(pat3.jpg);
+}
+.form-row {
+    padding-top: 5px;
+    padding-bottom: 15px;
+}
+.form-cat {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.form-rat {
+    height: 50px;
+    background-color: #DFDFDF;
+}
+.form-rat:hover {
+    background-color: #FFF9AC;
+}
+.card{
+    width: 27rem;
+    display: inline-block;
+    background-image: url(pat3.jpg);
+    font-family: 'Inknut Antiqua', serif;
+}
+.form-rat:focus {
+    height: 50px;
+    background-color: #FFF9AC;
+    border: 3px solid black;
+}
+#textReview:hover {
+    background-color: #FFF9AC;
+}
+#textReview:focus {
+    background-color: #FFF9AC;
+    border: 3px solid black;
+}
+#submitRev:hover {
+    border: 5px solid goldenrod;
+}
+.review-body{
+    background-image: url(pat2.jpg);
+}
+.row{
+    flex-direction: row;
 }
