@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/Rob-Kilgore/Tobeys-Tots#readme",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "jquery": "^3.4.1",
     "mocha": "^6.2.2",
     "mongodb": "^3.3.3",
