@@ -19,7 +19,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "jquery": "^3.4.1",
-    "mocha": "^6.2.2",
+    "mocha": "^10.2.0",
     "mongodb": "^3.3.3",
     "mongoose": "^5.7.10",
     "pug": "^2.0.4",
